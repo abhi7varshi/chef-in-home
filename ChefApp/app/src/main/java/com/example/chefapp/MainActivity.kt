@@ -45,7 +45,7 @@ fun HomeScreen() {
                 .fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
-            Text("Hello, World!")
+            Text("Nigga, World!")
         }
     }
 }
