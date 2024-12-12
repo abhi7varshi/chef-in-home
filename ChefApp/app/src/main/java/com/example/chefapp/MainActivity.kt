@@ -49,7 +49,7 @@ fun HomeScreen() {
             ,
             contentAlignment = Alignment.Center
         ) {
-            Text("Lauda, World!🍆🍑")
+            Text("Lauda, Mera!🍆🍑")
         }
     }
 }
