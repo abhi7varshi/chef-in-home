@@ -37,7 +37,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun HomeScreen() {
     Scaffold(topBar = {
-        TopAppBar(title = { Text("Home Screen") })
+        TopAppBar(title = { Text("Home Nigga") })
     }) { innerPadding ->
         Box(
             modifier = Modifier
