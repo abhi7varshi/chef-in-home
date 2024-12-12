@@ -1,0 +1,18 @@
+# Android-specific
+*.iml
+.gradle/
+build/
+.idea/
+local.properties
+.DS_Store
+
+# App-specific build directories
+UserApp/build/
+ChefApp/build/
+DeliveryApp/build/
+
+# Other files
+*.log
+*.bak
+*.tmp
+*.swp
