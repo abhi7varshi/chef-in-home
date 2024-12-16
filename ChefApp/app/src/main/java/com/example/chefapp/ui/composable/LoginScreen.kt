@@ -30,7 +30,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.chefapp.HomeScreen
-import com.example.chefapp.LoginScreen
 import com.example.chefapp.R
 
 @Composable
@@ -53,7 +52,7 @@ fun LoginScreen(
             val passwordVisible = remember { mutableStateOf(false) }
 
             Image(
-                painter = painterResource(id = R.drawable.logo_2),
+                painter = painterResource(id = R.drawable.logo),
                 contentDescription = "Logo",
                 modifier = Modifier.size(250.dp)
             )
@@ -66,7 +65,7 @@ fun LoginScreen(
 
             Text(text = "Login to your account")
 
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(8.dp))
 
             // Email Input Field
             OutlinedTextField(
