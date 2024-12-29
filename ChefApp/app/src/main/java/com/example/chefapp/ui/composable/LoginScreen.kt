@@ -52,7 +52,7 @@ fun LoginScreen(
             val passwordVisible = remember { mutableStateOf(false) }
 
             Image(
-                painter = painterResource(id = R.drawable.logo),
+                painter = painterResource(id = R.drawable.chef_app_logo_1),
                 contentDescription = "Logo",
                 modifier = Modifier.size(250.dp)
             )
