@@ -124,7 +124,7 @@ fun HomeScreen(
         ) {
             when (selectedIndex.intValue) {
                 0 -> HomeContent(isDarkModeEnabled = isDarkModeEnabled.value)
-                1 -> MenuContent(orders = dummyOrders)
+                1 -> MenuContent(orders = dummyOrders, navController = navController)
                 2 -> Text("Settings Content")
             }
         }

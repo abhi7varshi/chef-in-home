@@ -7,3 +7,6 @@ data object LoginScreen
 
 @Serializable
 data object HomeScreen
+
+@Serializable
+data object AddDish
