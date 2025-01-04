@@ -23,6 +23,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.chefapp.ui.composable.HomeScreen
+import com.example.chefapp.ui.composable.LoginScreen
 import com.example.chefapp.ui.theme.ChefAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,44 +37,17 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            ChefAppTheme {
-                HomeScreen()
+           val navController = rememberNavController()
+
+            NavHost(navController = navController, startDestination = LoginScreen){
+                composable<LoginScreen>{
+                    LoginScreen(navController = navController)
+                }
+
+                composable<HomeScreen>{
+                    HomeScreen(navController = navController)
+                }
             }
         }
-    }
-}
-
-
-@Composable
-fun HomeScreen() {
-    val repo = SettingsRepository(context = LocalContext.current)
-    val viewModel = SettingsViewModel(repository = repo)
-
-    val isDarkModeEnabled = viewModel.darkModeEnabled.collectAsState(initial = false)
-
-    Scaffold(topBar = {
-        TopAppBar(title = { Text("Shreyank Home Screen") })
-    }) { innerPadding ->
-        Box(
-            modifier = Modifier
-                .padding(innerPadding)
-                .fillMaxSize(),
-            contentAlignment = Alignment.Center
-        ) {
-            Column {
-                Text("Dark mode: ${isDarkModeEnabled.value}")
-                Switch(checked = isDarkModeEnabled.value, onCheckedChange = {
-                    viewModel.setDarkMode(it)
-                })
-            }
-        }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ChefAppTheme {
-        HomeScreen()
     }
 }
