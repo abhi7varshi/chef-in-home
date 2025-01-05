@@ -10,7 +10,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.chefapp.ui.composable.AddDish
+import com.example.chefapp.ui.composable.AddDishScreen
 import com.example.chefapp.ui.composable.HomeScreen
 import com.example.chefapp.ui.composable.LoginScreen
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,8 +32,8 @@ class MainActivity : ComponentActivity() {
                     HomeScreen(navController = navController)
                 }
 
-                composable<AddDish>(){
-                    AddDish(navController = navController)
+                composable<AddDishScreen>(){
+                    AddDishScreen(navController = navController)
                 }
             }
         }

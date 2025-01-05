@@ -9,4 +9,4 @@ data object LoginScreen
 data object HomeScreen
 
 @Serializable
-data object AddDish
+data object AddDishScreen
