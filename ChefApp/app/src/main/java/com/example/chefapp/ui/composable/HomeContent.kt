@@ -33,29 +33,29 @@ fun HomeContent(
             .padding(16.dp),
         contentAlignment = Alignment.Center
     ) {
-//        Column(
-//            horizontalAlignment = Alignment.CenterHorizontally
-//        ) {
-//            if(isDarkModeEnabled == true){
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            if(isDarkModeEnabled == true){
 //                Image(
 //                    painter = painterResource(id = R.drawable.open),
 //                    contentDescription = "Online"
 //                )
 //                Text("You are online.",fontSize = 28.sp)
 //                Text("Waiting for new orders!", fontSize = 16.sp)
-//            }else{
-//                Image(
-//                    painter = painterResource(id = R.drawable.offline),
-//                    contentDescription = "Offline"
-//                )
-//            }
-//        }
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            items(orders) { order ->
-                OrderInfoCard(order = order)
+                LazyColumn(
+                    modifier = Modifier.fillMaxSize(),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    items(orders) { order ->
+                        OrderInfoCard(order = order)
+                    }
+                }
+            }else{
+                Image(
+                    painter = painterResource(id = R.drawable.offline),
+                    contentDescription = "Offline"
+                )
             }
         }
     }
