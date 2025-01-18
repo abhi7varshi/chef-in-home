@@ -36,7 +36,7 @@ fun MenuContent(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             items(orders) { order ->
-                OrderInfoCard(order = order)
+//                OrderInfoCard(order = order)
             }
         }
 
@@ -56,32 +56,32 @@ fun MenuContent(
     }
 }
 
-@Composable
-@Preview(showBackground = true)
-fun MenuContentPreview() {
-    val sampleOrders = listOf(
-        OrderInfo(
-            id = "4002",
-            time = "8:00 PM",
-            items = listOf(
-                "Food Item 1" to 200,
-                "Food Item 2" to 200
-            ),
-            totalBill = 400
-        ),
-        OrderInfo(
-            id = "4003",
-            time = "9:00 PM",
-            items = listOf(
-                "Food Item 3" to 250,
-                "Food Item 4" to 150
-            ),
-            totalBill = 400
-        )
-    )
-
-    MenuContent(
-        orders = sampleOrders,
-        navController = rememberNavController()
-    )
-}
+//@Composable
+//@Preview(showBackground = true)
+//fun MenuContentPreview() {
+//    val sampleOrders = listOf(
+//        OrderInfo(
+//            id = "4002",
+//            time = "8:00 PM",
+//            items = listOf(
+//                "Food Item 1" to 200,
+//                "Food Item 2" to 200
+//            ),
+//            totalBill = 400
+//        ),
+//        OrderInfo(
+//            id = "4003",
+//            time = "9:00 PM",
+//            items = listOf(
+//                "Food Item 3" to 250,
+//                "Food Item 4" to 150
+//            ),
+//            totalBill = 400
+//        )
+//    )
+//
+//    MenuContent(
+//        orders = sampleOrders,
+//        navController = rememberNavController()
+//    )
+//}

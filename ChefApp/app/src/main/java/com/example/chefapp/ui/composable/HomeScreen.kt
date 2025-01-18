@@ -81,16 +81,6 @@ fun HomeScreen(
                             )
                         )
                     }
-                    IconButton(onClick = {
-                        // Handle log out logic here
-                        navController.popBackStack()
-                    }) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Default.ExitToApp,
-                            contentDescription = "Log Out Button",
-                            tint = Color.White
-                        )
-                    }
                 },
             )
         },
@@ -123,7 +113,7 @@ fun HomeScreen(
                 .fillMaxSize()
         ) {
             when (selectedIndex.intValue) {
-                0 -> HomeContent(isDarkModeEnabled = isDarkModeEnabled.value)
+                0 -> HomeContent(orders = dummyOrders,isDarkModeEnabled = isDarkModeEnabled.value)
                 1 -> MenuContent(orders = dummyOrders, navController = navController)
                 2 -> Text("Settings Content")
             }
