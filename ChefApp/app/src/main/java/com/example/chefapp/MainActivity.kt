@@ -23,16 +23,16 @@ class MainActivity : ComponentActivity() {
         setContent {
            val navController = rememberNavController()
 
-            NavHost(navController = navController, startDestination = LoginScreen){
-                composable<LoginScreen>{
+            NavHost(navController = navController, startDestination = LoginRoute){
+                composable<LoginRoute>{
                     LoginScreen(navController = navController)
                 }
 
-                composable<HomeScreen>{
+                composable<HomeRoute>{
                     HomeScreen(navController = navController)
                 }
 
-                composable<AddDishScreen>(){
+                composable<AddDishRoute>(){
                     AddDishScreen(navController = navController)
                 }
             }

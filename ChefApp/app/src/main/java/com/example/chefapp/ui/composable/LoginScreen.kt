@@ -29,7 +29,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.chefapp.HomeScreen
+import com.example.chefapp.HomeRoute
 import com.example.chefapp.R
 
 @Composable
@@ -108,7 +108,7 @@ fun LoginScreen(
 
             Button(
                 onClick = {
-                    navController.navigate(route = HomeScreen)
+                    navController.navigate(route = HomeRoute)
                 }, modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 52.dp)

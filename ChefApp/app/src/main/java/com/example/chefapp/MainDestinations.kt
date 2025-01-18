@@ -3,10 +3,10 @@ package com.example.chefapp
 import kotlinx.serialization.Serializable
 
 @Serializable
-data object LoginScreen
+data object LoginRoute
 
 @Serializable
-data object HomeScreen
+data object HomeRoute
 
 @Serializable
-data object AddDishScreen
+data object AddDishRoute

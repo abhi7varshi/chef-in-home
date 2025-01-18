@@ -17,7 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.example.chefapp.AddDishScreen
+import com.example.chefapp.AddDishRoute
 import com.example.chefapp.data.OrderInfo
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -42,7 +42,7 @@ fun MenuContent(
 
         FloatingActionButton(
             onClick = {
-                navController.navigate(route = AddDishScreen)
+                navController.navigate(route = AddDishRoute)
             },
             modifier = Modifier
                 .align(Alignment.BottomEnd)
