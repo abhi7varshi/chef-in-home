@@ -6,10 +6,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ExitToApp
-import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.*
@@ -23,11 +22,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.chefapp.R
 import com.example.chefapp.SettingsRepository
 import com.example.chefapp.SettingsViewModel
 import com.example.chefapp.data.dummyOrders
@@ -89,13 +90,26 @@ fun HomeScreen(
                 NavigationBarItem(
                     selected = selectedIndex.intValue == 0,
                     onClick = { selectedIndex.intValue = 0 },
-                    icon = { Icon(Icons.Default.Home, contentDescription = "Home") },
-                    label = { Text("Home") }
+                    icon = {
+                        Icon(
+                            painter = painterResource(id = R.drawable.tray),
+                            contentDescription = "Orders - Tray Icon",
+                            modifier = Modifier.size(25.dp)
+                        )
+                    },
+                    label = { Text("Orders") },
+
                 )
                 NavigationBarItem(
                     selected = selectedIndex.intValue == 1,
                     onClick = { selectedIndex.intValue = 1 },
-                    icon = { Icon(Icons.Default.Menu, contentDescription = "Menu") },
+                    icon = {
+                        Icon(
+                            painter = painterResource(id = R.drawable.menu),
+                            contentDescription = "Menu Icon",
+                            modifier = Modifier.size(25.dp)
+                        )
+                    },
                     label = { Text("Menu") }
                 )
                 NavigationBarItem(
