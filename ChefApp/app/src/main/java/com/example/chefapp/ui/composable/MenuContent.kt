@@ -1,6 +1,8 @@
 package com.example.chefapp.ui.composable
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -13,33 +15,53 @@ import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.example.chefapp.AddDishRoute
+import com.example.chefapp.R
 import com.example.chefapp.data.OrderInfo
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MenuContent(
     orders: List<OrderInfo>,
+    isDarkModeEnabled: Boolean,
     navController: NavController
 ) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(16.dp),
+        contentAlignment = Alignment.Center
     ) {
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
+        Column(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            items(orders) { order ->
-//                OrderInfoCard(order = order)
+            if (isDarkModeEnabled == true) {
+//                Image(
+//                    painter = painterResource(id = R.drawable.open),
+//                    contentDescription = "Online"
+//                )
+//                Text("You are online.",fontSize = 28.sp)
+//                Text("Waiting for new orders!", fontSize = 16.sp)
+                LazyColumn(
+                    modifier = Modifier.fillMaxSize(),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    items(orders) { order ->
+                        MenuInfoCard()
+                    }
+                }
+            } else {
+                Image(
+                    painter = painterResource(id = R.drawable.offline),
+                    contentDescription = "Offline"
+                )
             }
         }
-
         FloatingActionButton(
             onClick = {
                 navController.navigate(route = AddDishRoute)
@@ -56,32 +78,12 @@ fun MenuContent(
     }
 }
 
-//@Composable
-//@Preview(showBackground = true)
-//fun MenuContentPreview() {
-//    val sampleOrders = listOf(
-//        OrderInfo(
-//            id = "4002",
-//            time = "8:00 PM",
-//            items = listOf(
-//                "Food Item 1" to 200,
-//                "Food Item 2" to 200
-//            ),
-//            totalBill = 400
-//        ),
-//        OrderInfo(
-//            id = "4003",
-//            time = "9:00 PM",
-//            items = listOf(
-//                "Food Item 3" to 250,
-//                "Food Item 4" to 150
-//            ),
-//            totalBill = 400
-//        )
-//    )
-//
-//    MenuContent(
-//        orders = sampleOrders,
-//        navController = rememberNavController()
-//    )
-//}
+@Composable
+@Preview(showBackground = true)
+fun MenuContentPreview() {
+    MenuContent(
+        orders = emptyList(),
+        isDarkModeEnabled = false,
+        navController = NavController(LocalContext.current)
+    )
+}

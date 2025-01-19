@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.*
 import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
@@ -128,7 +127,7 @@ fun HomeScreen(
         ) {
             when (selectedIndex.intValue) {
                 0 -> HomeContent(orders = dummyOrders,isDarkModeEnabled = isDarkModeEnabled.value)
-                1 -> MenuContent(orders = dummyOrders, navController = navController)
+                1 -> MenuContent(orders = dummyOrders,isDarkModeEnabled = isDarkModeEnabled.value, navController = navController)
                 2 -> Text("Settings Content")
             }
         }
