@@ -17,8 +17,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -32,18 +30,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.chefapp.AuthState
 import com.example.chefapp.AuthViewModel
-import com.example.chefapp.HomeRoute
+import com.example.chefapp.LoginRoute
 import com.example.chefapp.R
-import com.example.chefapp.SignUpRoute
 
 @Composable
-fun LoginScreen(
+fun SignUpScreen(
     navController: NavController,
     viewModel: AuthViewModel
 ) {
-
     Scaffold { innerPadding ->
         Column(
             verticalArrangement = Arrangement.Center,
@@ -53,33 +48,6 @@ fun LoginScreen(
                 .padding(innerPadding)
         ) {
             val context = LocalContext.current
-
-            // Observe authState
-            val authState = viewModel.authState.observeAsState().value
-
-            // Handle authState with LaunchedEffect
-            LaunchedEffect(authState) {
-                when (authState) {
-                    is AuthState.Authenticated -> {
-                        navController.navigate(HomeRoute) {
-                            popUpTo(0) // Clear back stack
-                        }
-                    }
-                    is AuthState.Error -> {
-                        Toast.makeText(context, authState.message, Toast.LENGTH_SHORT).show()
-                    }
-                    AuthState.Loading -> {
-                        // Optionally show a loading indicator
-                        Toast.makeText(context, "Loading...", Toast.LENGTH_SHORT).show()
-                    }
-                    AuthState.Unauthenticated -> {
-                        // Stay on login screen or take additional actions
-                    }
-                    null -> {
-                        // Handle null state if necessary
-                    }
-                }
-            }
 
             // State variables for email and password input
             val email = remember { mutableStateOf("") }
@@ -98,7 +66,7 @@ fun LoginScreen(
 
             Spacer(modifier = Modifier.height(32.dp))
 
-            Text(text = "Login to your account")
+            Text(text = "Sign Up for a new account")
 
             Spacer(modifier = Modifier.height(8.dp))
 
@@ -143,12 +111,13 @@ fun LoginScreen(
 
             Button(
                 onClick = {
-                    viewModel.login(email.value, password.value)
+//                    navController.navigate(route = HomeRoute)
+                    viewModel.signup(email.value, password.value)
                 }, modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 52.dp)
             ) {
-                Text(text = "Login")
+                Text(text = "Sign Up")
             }
 
             Spacer(modifier = Modifier.height(32.dp))
@@ -163,18 +132,18 @@ fun LoginScreen(
             Spacer(modifier = Modifier.height(32.dp))
 
             TextButton(onClick = {
-                 navController.navigate(route = SignUpRoute)
-            }) {Text(text = "Don't have an account? Sign up") }
+                 navController.navigate(route = LoginRoute)
+            }) { Text(text = "Already have an account? Login") }
 
         }
+
     }
 }
 
-
-@Composable
 @Preview
-fun LoginScreenPreview(){
-    LoginScreen(
+@Composable
+fun SignUpScreenPreview() {
+    SignUpScreen(
         navController = NavController(LocalContext.current),
         viewModel = AuthViewModel()
     )

@@ -25,8 +25,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.chefapp.AuthViewModel
 import com.example.chefapp.R
 import com.example.chefapp.SettingsRepository
 import com.example.chefapp.SettingsViewModel
@@ -35,7 +37,8 @@ import com.example.chefapp.data.dummyOrders
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    navController: NavController
+    navController: NavController,
+    viewModel: AuthViewModel
 ) {
     val selectedIndex = remember { mutableIntStateOf(0) }
 
@@ -128,7 +131,7 @@ fun HomeScreen(
             when (selectedIndex.intValue) {
                 0 -> HomeContent(orders = dummyOrders,isDarkModeEnabled = isDarkModeEnabled.value)
                 1 -> MenuContent(orders = dummyOrders,isDarkModeEnabled = isDarkModeEnabled.value, navController = navController)
-                2 -> Text("Settings Content")
+                2 -> SettingsContent(navController = navController, authViewModel = viewModel())
             }
         }
     }
@@ -137,5 +140,8 @@ fun HomeScreen(
 @Composable
 @Preview
 fun HomeScreenPreview() {
-    HomeScreen(navController = rememberNavController())
+    HomeScreen(
+        navController = rememberNavController(),
+        viewModel = AuthViewModel()
+    )
 }

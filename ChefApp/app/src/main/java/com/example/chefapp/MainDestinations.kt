@@ -10,3 +10,6 @@ data object HomeRoute
 
 @Serializable
 data object AddDishRoute
+
+@Serializable
+data object SignUpRoute

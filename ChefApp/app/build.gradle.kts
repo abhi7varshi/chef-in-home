@@ -6,6 +6,7 @@ plugins {
     id("com.google.devtools.ksp")
     kotlin("plugin.serialization")
     id("com.google.protobuf")
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -59,6 +60,11 @@ protobuf {
 }
 
 dependencies {
+    //Live data (deprecated)
+    implementation("androidx.compose.runtime:runtime:1.7.6")
+    implementation("androidx.compose.runtime:runtime-livedata:1.7.6")
+    implementation("androidx.compose.runtime:runtime-rxjava2:1.7.6")
+
     //datastore
     implementation("androidx.datastore:datastore-preferences:1.1.1")
     implementation("androidx.datastore:datastore:1.1.1")
@@ -68,6 +74,7 @@ dependencies {
     //room
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
+    implementation(libs.firebase.auth)
     ksp("androidx.room:room-compiler:2.6.1")
 
     //retrofit

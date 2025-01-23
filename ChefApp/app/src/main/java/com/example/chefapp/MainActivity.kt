@@ -13,6 +13,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.chefapp.ui.composable.AddDishScreen
 import com.example.chefapp.ui.composable.HomeScreen
 import com.example.chefapp.ui.composable.LoginScreen
+import com.example.chefapp.ui.composable.SignUpScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,13 +24,17 @@ class MainActivity : ComponentActivity() {
         setContent {
            val navController = rememberNavController()
 
-            NavHost(navController = navController, startDestination = HomeRoute){
+            NavHost(navController = navController, startDestination = LoginRoute){
                 composable<LoginRoute>{
-                    LoginScreen(navController = navController)
+                    LoginScreen(navController = navController, viewModel = AuthViewModel())
+                }
+
+                composable<SignUpRoute>{
+                    SignUpScreen(navController = navController, viewModel = AuthViewModel())
                 }
 
                 composable<HomeRoute>{
-                    HomeScreen(navController = navController)
+                    HomeScreen(navController = navController, viewModel = AuthViewModel())
                 }
 
                 composable<AddDishRoute>(){
