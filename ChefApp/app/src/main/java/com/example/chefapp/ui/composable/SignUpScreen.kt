@@ -30,7 +30,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.chefapp.AuthViewModel
+import com.example.chefapp.ui.viewModel.AuthViewModel
 import com.example.chefapp.LoginRoute
 import com.example.chefapp.R
 

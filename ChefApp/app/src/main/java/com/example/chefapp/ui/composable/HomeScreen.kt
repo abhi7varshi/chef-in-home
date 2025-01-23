@@ -28,7 +28,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.example.chefapp.AuthViewModel
+import com.example.chefapp.ui.viewModel.AuthViewModel
 import com.example.chefapp.R
 import com.example.chefapp.SettingsRepository
 import com.example.chefapp.SettingsViewModel

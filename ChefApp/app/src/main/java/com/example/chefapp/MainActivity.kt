@@ -14,6 +14,7 @@ import com.example.chefapp.ui.composable.AddDishScreen
 import com.example.chefapp.ui.composable.HomeScreen
 import com.example.chefapp.ui.composable.LoginScreen
 import com.example.chefapp.ui.composable.SignUpScreen
+import com.example.chefapp.ui.viewModel.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
