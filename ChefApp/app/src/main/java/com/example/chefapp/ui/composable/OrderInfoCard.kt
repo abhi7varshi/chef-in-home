@@ -6,9 +6,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CardDefaults.cardElevation
-import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -19,18 +19,21 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.chefapp.ui.theme.PrimaryColor
+import com.example.chefapp.R
 import com.example.chefapp.data.FoodItem
 import com.example.chefapp.data.OrderInfo
-import com.example.chefapp.R
 import com.example.chefapp.data.calculateTotalBill
+import com.example.chefapp.ui.theme.PrimaryColor
 
 @Composable
 fun OrderInfoCard(order: OrderInfo) {
     val context = LocalContext.current
     val totalBill = order.calculateTotalBill()
 
-    ElevatedCard(
+    OutlinedCard(
+        colors = androidx.compose.material3.CardDefaults.cardColors(
+            containerColor = Color.White
+        ),
         elevation = cardElevation(defaultElevation = 6.dp),
         modifier = Modifier
             .fillMaxWidth()

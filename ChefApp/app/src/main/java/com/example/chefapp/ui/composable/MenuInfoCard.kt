@@ -12,24 +12,35 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.CardDefaults.cardElevation
-import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.OutlinedCard
+import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.chefapp.R
 
 @Composable
 fun MenuInfoCard() {
     val context = LocalContext.current
+    var checked = remember { mutableStateOf(true) }
 
-    ElevatedCard(
+    OutlinedCard (
+        colors = androidx.compose.material3.CardDefaults.cardColors(
+            containerColor = Color.White
+        ),
         elevation = cardElevation(defaultElevation = 6.dp),
         modifier = Modifier
             .fillMaxWidth()
@@ -63,7 +74,7 @@ fun MenuInfoCard() {
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 // Food Name
                                 Text(
-                                    text = "Food Item 1", fontWeight = FontWeight.Bold
+                                    text = "Food Item 1", fontWeight = FontWeight.Bold, fontSize = 16.sp
                                 )
 
                                 Spacer(modifier = Modifier.width(4.dp))
@@ -78,11 +89,28 @@ fun MenuInfoCard() {
                                 text = "This is a detailed description of the food item, explaining its ingredients, preparation, and any other relevant information.",
                                 Modifier.padding(4.dp)
                             )
+
+                            Spacer(modifier = Modifier.padding(8.dp))
+
+                            Text(text = "₹200", fontWeight = FontWeight.Bold, fontSize = 16.sp )
                         }
                     }
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
+                        // Switch Toggle Button
+                        Switch(
+                            checked = checked.value,
+                            onCheckedChange = {
+                                checked.value = it
+                            },
+                            modifier = Modifier.scale(0.8f),
+                            colors = SwitchDefaults.colors(
+                                checkedThumbColor = Color(0xFF4CAF50),
+                                checkedTrackColor = Color(0xFF81C784)
+                            )
+                        )
+
                         // Food Image
                         Image(
                             painter = painterResource(R.drawable.dummy_food_image),
