@@ -38,7 +38,6 @@ import com.example.chefapp.data.dummyOrders
 @Composable
 fun HomeScreen(
     navController: NavController,
-    viewModel: AuthViewModel
 ) {
     val selectedIndex = remember { mutableIntStateOf(0) }
 
@@ -130,7 +129,7 @@ fun HomeScreen(
         ) {
             when (selectedIndex.intValue) {
                 0 -> HomeContent(orders = dummyOrders,isDarkModeEnabled = isDarkModeEnabled.value)
-                1 -> MenuContent(orders = dummyOrders,isDarkModeEnabled = isDarkModeEnabled.value, navController = navController)
+                1 -> MenuContent(orders = dummyOrders, navController = navController)
                 2 -> SettingsContent(navController = navController, authViewModel = viewModel())
             }
         }
@@ -140,8 +139,5 @@ fun HomeScreen(
 @Composable
 @Preview
 fun HomeScreenPreview() {
-    HomeScreen(
-        navController = rememberNavController(),
-        viewModel = AuthViewModel()
-    )
+    HomeScreen(navController = rememberNavController())
 }

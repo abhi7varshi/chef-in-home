@@ -41,10 +41,10 @@ class MainActivity : ComponentActivity() {
                 }
 
                 composable<HomeRoute>{
-                    HomeScreen(navController = navController, viewModel = AuthViewModel())
+                    HomeScreen(navController = navController)
                 }
 
-                composable<AddDishRoute>(){
+                composable<AddDishRoute>{
                     AddDishScreen(navController = navController)
                 }
             }
