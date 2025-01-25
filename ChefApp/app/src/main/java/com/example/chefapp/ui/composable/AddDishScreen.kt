@@ -1,14 +1,15 @@
 package com.example.chefapp.ui.composable
 
-import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Button
@@ -27,15 +28,16 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import coil3.Uri
 import coil3.compose.rememberAsyncImagePainter
 import com.example.chefapp.R
 import com.example.chefapp.ui.theme.PrimaryColor
@@ -45,6 +47,8 @@ import com.example.chefapp.ui.theme.PrimaryColor
 fun AddDishScreen(navController: NavController) {
     val context = LocalContext.current
     var dishName by remember { mutableStateOf(TextFieldValue("")) }
+    var dishPrice by remember { mutableStateOf(TextFieldValue("")) }
+    var setQuantity by remember { mutableStateOf(TextFieldValue("")) }
     var selectedDishType by remember { mutableStateOf("Veg") }
     var selectedImageUri by remember { mutableStateOf<android.net.Uri?>(null) }
     val imagePicker =
@@ -147,7 +151,7 @@ fun AddDishScreen(navController: NavController) {
                     modifier = Modifier.fillMaxWidth()
                 )
 
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(8.dp))
 
                 // Description text field
                 OutlinedTextField(
@@ -160,41 +164,85 @@ fun AddDishScreen(navController: NavController) {
                 Spacer(modifier = Modifier.height(16.dp))
 
                 // Select Dish Type Text
-                Text(
-                    text = "Select Dish Type",
-                    fontSize = 16.sp,
-                    color = Color.Black,
+                Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = 8.dp)
+                        .border(
+                            width = 1.dp,
+                            color = Color.Gray,
+                            shape = androidx.compose.foundation.shape.RoundedCornerShape(4.dp) // Rounded corners
+                        )
+                        .clip(androidx.compose.foundation.shape.RoundedCornerShape(8.dp)) // Clip content to match the border
+                        .padding(8.dp)
+                ) {
+                    Column {
+                        // Select Dish Type Text
+                        Text(
+                            text = "Select Dish Type",
+                            fontSize = 16.sp,
+                            color = Color.Black,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(bottom = 8.dp) // Space below the text
+                        )
+
+                        // Radio Buttons for Veg/Non-Veg
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            RadioButton(
+                                selected = selectedDishType == "Veg",
+                                onClick = { selectedDishType = "Veg" }
+                            )
+                            Text(
+                                text = "Veg",
+                                modifier = Modifier.padding(start = 8.dp)
+                            )
+                            Spacer(modifier = Modifier.width(16.dp))
+                            RadioButton(
+                                selected = selectedDishType == "Non-Veg",
+                                onClick = { selectedDishType = "Non-Veg" }
+                            )
+                            Text(
+                                text = "Non-Veg",
+                                modifier = Modifier.padding(start = 8.dp)
+                            )
+                        }
+                    }
+                }
+
+                Spacer(Modifier.padding(4.dp))
+
+                // Price text field
+                OutlinedTextField(
+                    value = dishPrice,
+                    onValueChange = {
+                        dishPrice = it
+                    },
+                    label = { Text("Enter Price!") },
+                    modifier = Modifier.fillMaxWidth(),
+                    keyboardOptions = KeyboardOptions.Default.copy(
+                        keyboardType = KeyboardType.Number // Set keyboard to numeric
+                    )
                 )
 
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(Modifier.padding(4.dp))
 
-                // Radio Buttons for Veg/Non-Veg
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    RadioButton(
-                        selected = selectedDishType == "Veg",
-                        onClick = { selectedDishType = "Veg" }
+                // Set available Quantity
+                OutlinedTextField(
+                    value = setQuantity,
+                    onValueChange = {
+                        setQuantity = it
+                    },
+                    label = { Text("Set available quantity (gram)") },
+                    modifier = Modifier.fillMaxWidth(),
+                    keyboardOptions = KeyboardOptions.Default.copy(
+                        keyboardType = KeyboardType.Number // Set keyboard to numeric
                     )
-                    Text(
-                        text = "Veg",
-                        modifier = Modifier.padding(start = 8.dp)
-                    )
-                    Spacer(modifier = Modifier.width(16.dp))
-                    RadioButton(
-                        selected = selectedDishType == "Non-Veg",
-                        onClick = { selectedDishType = "Non-Veg" }
-                    )
-                    Text(
-                        text = "Non-Veg",
-                        modifier = Modifier.padding(start = 8.dp)
-                    )
-                }
+                )
             }
+
 
             // Add Dish button
             Button(

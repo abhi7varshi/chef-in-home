@@ -92,7 +92,19 @@ fun MenuInfoCard() {
 
                             Spacer(modifier = Modifier.padding(8.dp))
 
-                            Text(text = "₹200", fontWeight = FontWeight.Bold, fontSize = 16.sp )
+                            Row{
+                                Text(text = "Price: ", fontWeight = FontWeight.Bold, fontSize = 16.sp )
+                                Text(text = "₹200", fontSize = 16.sp )
+                            }
+
+                            Spacer(modifier = Modifier.padding(4.dp))
+
+                            Row {
+                                Text(text = "Available Quantity: ", fontWeight = FontWeight.Bold, fontSize = 16.sp )
+                                Text(text = "10", color = Color.Black , fontSize = 16.sp )
+                            }
+
+
                         }
                     }
                     Column(
