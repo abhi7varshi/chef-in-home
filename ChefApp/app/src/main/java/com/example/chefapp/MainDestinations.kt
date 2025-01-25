@@ -3,6 +3,9 @@ package com.example.chefapp
 import kotlinx.serialization.Serializable
 
 @Serializable
+data object IntroductionRoute
+
+@Serializable
 data object LoginRoute
 
 @Serializable
