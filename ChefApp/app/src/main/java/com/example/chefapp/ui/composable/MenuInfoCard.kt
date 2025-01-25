@@ -101,7 +101,7 @@ fun MenuInfoCard() {
 
                             Row {
                                 Text(text = "Available Quantity: ", fontWeight = FontWeight.Bold, fontSize = 16.sp )
-                                Text(text = "10", color = Color.Black , fontSize = 16.sp )
+                                Text(text = "500g", color = Color.Black , fontSize = 16.sp )
                             }
 
 
