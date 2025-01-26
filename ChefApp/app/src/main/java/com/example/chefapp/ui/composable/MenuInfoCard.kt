@@ -1,6 +1,5 @@
 package com.example.chefapp.ui.composable
 
-import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -30,14 +29,19 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.example.chefapp.EditDishRoute
 import com.example.chefapp.R
 
 @Composable
-fun MenuInfoCard() {
+fun MenuInfoCard(
+    navController: NavController
+) {
     val context = LocalContext.current
     var checked = remember { mutableStateOf(true) }
 
-    OutlinedCard (
+    OutlinedCard(
         colors = androidx.compose.material3.CardDefaults.cardColors(
             containerColor = Color.White
         ),
@@ -74,7 +78,9 @@ fun MenuInfoCard() {
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 // Food Name
                                 Text(
-                                    text = "Food Item 1", fontWeight = FontWeight.Bold, fontSize = 16.sp
+                                    text = "Food Item 1",
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 16.sp
                                 )
 
                                 Spacer(modifier = Modifier.width(4.dp))
@@ -92,16 +98,24 @@ fun MenuInfoCard() {
 
                             Spacer(modifier = Modifier.padding(8.dp))
 
-                            Row{
-                                Text(text = "Price: ", fontWeight = FontWeight.Bold, fontSize = 16.sp )
-                                Text(text = "₹200", fontSize = 16.sp )
+                            Row {
+                                Text(
+                                    text = "Price: ",
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 16.sp
+                                )
+                                Text(text = "₹200", fontSize = 16.sp)
                             }
 
                             Spacer(modifier = Modifier.padding(4.dp))
 
                             Row {
-                                Text(text = "Available Quantity: ", fontWeight = FontWeight.Bold, fontSize = 16.sp )
-                                Text(text = "500g", color = Color.Black , fontSize = 16.sp )
+                                Text(
+                                    text = "Available Quantity: ",
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 16.sp
+                                )
+                                Text(text = "500g", color = Color.Black, fontSize = 16.sp)
                             }
 
 
@@ -133,11 +147,11 @@ fun MenuInfoCard() {
                         //Edit Button
                         OutlinedButton(
                             onClick = {
-                                Toast.makeText(context, "Edit Button Clicked", Toast.LENGTH_SHORT).show()
+                                navController.navigate(route = EditDishRoute)
                             },
                             modifier = Modifier
                                 .height(30.dp),
-                            ) {
+                        ) {
                             Text(
                                 "Edit",
                                 style = androidx.compose.material3.MaterialTheme.typography.bodySmall
@@ -154,5 +168,7 @@ fun MenuInfoCard() {
 @Composable
 @Preview
 fun MenuInfoCardPreview() {
-    MenuInfoCard()
+    MenuInfoCard(
+        navController = rememberNavController()
+    )
 }
