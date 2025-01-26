@@ -11,6 +11,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.chefapp.ui.composable.AddDishScreen
+import com.example.chefapp.ui.composable.EditDishScreen
 import com.example.chefapp.ui.composable.HomeScreen
 import com.example.chefapp.ui.composable.IntroductionScreen
 import com.example.chefapp.ui.composable.LoginScreen
@@ -46,6 +47,10 @@ class MainActivity : ComponentActivity() {
 
                 composable<AddDishRoute>{
                     AddDishScreen(navController = navController)
+                }
+
+                composable<EditDishRoute>{
+                    EditDishScreen(navController = navController)
                 }
             }
         }

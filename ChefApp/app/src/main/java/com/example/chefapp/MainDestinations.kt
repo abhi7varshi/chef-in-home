@@ -16,3 +16,6 @@ data object AddDishRoute
 
 @Serializable
 data object SignUpRoute
+
+@Serializable
+data object EditDishRoute

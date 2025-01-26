@@ -44,7 +44,7 @@ fun MenuContent(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     items(orders) { order ->
-                        MenuInfoCard()
+                        MenuInfoCard(navController)
                     }
                 }
         }
