@@ -46,6 +46,9 @@ fun HomeScreen(
 
     val isDarkModeEnabled = viewModel.darkModeEnabled.collectAsState(initial = false)
 
+    // Dynamic title based on selected tab
+    val titles = listOf("Orders", "Menu", "Settings")
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -54,34 +57,37 @@ fun HomeScreen(
                 ),
                 title = {
                     Text(
-                        "Home Screen",
+                        titles[selectedIndex.intValue], // Use the dynamic title here
                         color = Color.White
                     )
                 },
                 actions = {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier.padding(end = 16.dp)
-                    ) {
-                        Text(
-                            "Online",
-                            fontSize = 16.sp,
-                            color = Color.White
-                        )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Switch(
-                            checked = isDarkModeEnabled.value,
-                            onCheckedChange = { it ->
-                                viewModel.setDarkMode(it)
-                                Log.d("HomeScreen", "Online Switch Toggled")
-                                Log.d("HomeScreen", "Dark mode updated: $it")
-                            },
-                            modifier = Modifier.scale(0.8f),
-                            colors = SwitchDefaults.colors(
-                                checkedThumbColor = Color(0xFF4CAF50),
-                                checkedTrackColor = Color(0xFF81C784)
+                    // Show Online text and Switch only on the Orders tab
+                    if (selectedIndex.intValue == 0) {
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.padding(end = 16.dp)
+                        ) {
+                            Text(
+                                "Online",
+                                fontSize = 16.sp,
+                                color = Color.White
                             )
-                        )
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Switch(
+                                checked = isDarkModeEnabled.value,
+                                onCheckedChange = { isChecked ->
+                                    viewModel.setDarkMode(isChecked)
+                                    Log.d("HomeScreen", "Online Switch Toggled")
+                                    Log.d("HomeScreen", "Dark mode updated: $isChecked")
+                                },
+                                modifier = Modifier.scale(0.8f),
+                                colors = SwitchDefaults.colors(
+                                    checkedThumbColor = Color(0xFF4CAF50),
+                                    checkedTrackColor = Color(0xFF81C784)
+                                )
+                            )
+                        }
                     }
                 },
             )
@@ -114,7 +120,7 @@ fun HomeScreen(
                     label = { Text("Menu") }
                 )
                 NavigationBarItem(
-                    selectedIndex.intValue == 2,
+                    selected = selectedIndex.intValue == 2,
                     onClick = { selectedIndex.intValue = 2 },
                     icon = { Icon(Icons.Default.Settings, contentDescription = "Settings") },
                     label = { Text("Settings") }
@@ -128,7 +134,7 @@ fun HomeScreen(
                 .fillMaxSize()
         ) {
             when (selectedIndex.intValue) {
-                0 -> HomeContent(orders = dummyOrders,isDarkModeEnabled = isDarkModeEnabled.value)
+                0 -> HomeContent(orders = dummyOrders, isDarkModeEnabled = isDarkModeEnabled.value)
                 1 -> MenuContent(orders = dummyOrders, navController = navController)
                 2 -> SettingsContent(navController = navController, authViewModel = viewModel())
             }
