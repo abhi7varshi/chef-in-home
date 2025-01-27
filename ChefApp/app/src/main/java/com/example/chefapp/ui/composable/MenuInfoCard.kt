@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.CardDefaults.cardElevation
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Switch
@@ -45,7 +44,6 @@ fun MenuInfoCard(
         colors = androidx.compose.material3.CardDefaults.cardColors(
             containerColor = Color.White
         ),
-        elevation = cardElevation(defaultElevation = 6.dp),
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)

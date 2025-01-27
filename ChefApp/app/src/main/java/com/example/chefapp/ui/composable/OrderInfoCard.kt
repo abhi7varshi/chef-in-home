@@ -5,7 +5,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.CardDefaults.cardElevation
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedCard
@@ -34,7 +33,6 @@ fun OrderInfoCard(order: OrderInfo) {
         colors = androidx.compose.material3.CardDefaults.cardColors(
             containerColor = Color.White
         ),
-        elevation = cardElevation(defaultElevation = 6.dp),
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp) 
