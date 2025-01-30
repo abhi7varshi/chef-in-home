@@ -13,7 +13,16 @@ data class OrderInfo(
     val id: String,
     val time: String,
     val items: List<FoodItem>, // List of FoodItem objects
+    val status: OrderStatus = OrderStatus.NEW
 )
+
+enum class OrderStatus {
+    NEW,
+    READY,
+    PICKED_UP
+}
+
+
 
 // Extension function to calculate the total bill
 fun OrderInfo.calculateTotalBill(): Int {

@@ -1,19 +1,11 @@
 package com.example.chefapp.ui.composable
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Tab
-import androidx.compose.material3.TabRow
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -23,6 +15,7 @@ import androidx.compose.ui.unit.sp
 import com.example.chefapp.R
 import com.example.chefapp.data.FoodItem
 import com.example.chefapp.data.OrderInfo
+import com.example.chefapp.data.OrderStatus
 import com.example.chefapp.ui.theme.ChefAppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -40,25 +33,29 @@ fun HomeContent(
             .padding(16.dp)
     ) {
         if (isDarkModeEnabled) {
-
-            TabRow(
-                selectedTabIndex = selectedTabIndex,
+            // Segmented Button Row
+            SingleChoiceSegmentedButtonRow(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 tabTitles.forEachIndexed { index, title ->
-                    Tab(
+                    SegmentedButton(
                         selected = selectedTabIndex == index,
                         onClick = { selectedTabIndex = index },
-                        text = { Text(title, fontSize = 16.sp) }
-                    )
+                        shape = SegmentedButtonDefaults.itemShape(index, tabTitles.size),
+                        colors = SegmentedButtonDefaults.colors(),
+                    ) {
+                        Text(text = title, fontSize = 16.sp)
+                    }
                 }
             }
 
-            // **Tab Content Based on Selection**
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // Tab Content Based on Selection
             when (selectedTabIndex) {
-                0 -> OrdersList(orders)  // Show "Orders" list
-                1 -> ReadyList(orders)   // Show "Ready" list
-                2 -> PickupList(orders)  // Show "Pickup" list
+                0 -> OrdersList(orders.filter { it.status == OrderStatus.NEW })
+                1 -> ReadyList(orders.filter { it.status == OrderStatus.READY })
+                2 -> PickupList(orders.filter { it.status == OrderStatus.PICKED_UP })
             }
         } else {
             Image(
@@ -71,45 +68,71 @@ fun HomeContent(
 
 @Composable
 fun OrdersList(orders: List<OrderInfo>) {
-    LazyColumn(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        items(orders) { order ->
-            OrderInfoCard(order = order)  // Display orders in this tab
+    if (orders.isEmpty()) {
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            Text("No new orders")
+        }
+    } else {
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            items(orders) { order ->
+                OrderInfoCard(order = order)
+            }
         }
     }
 }
 
 @Composable
 fun ReadyList(orders: List<OrderInfo>) {
-    LazyColumn(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        items(orders) { order ->
-            OrderInfoCard(order = order)  // Change logic to show "ready" items if needed
+    if (orders.isEmpty()) {
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            Text("No orders ready for pickup")
+        }
+    } else {
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            items(orders) { order ->
+                OrderInfoCard(order = order)
+            }
         }
     }
 }
 
 @Composable
 fun PickupList(orders: List<OrderInfo>) {
-    LazyColumn(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        items(orders) { order ->
-            OrderInfoCard(order = order)  // Change logic to show "pickup" items if needed
+    if (orders.isEmpty()) {
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            Text("No picked up orders")
+        }
+    } else {
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            items(orders) { order ->
+                OrderInfoCard(order = order)
+            }
         }
     }
 }
 
-
+// Update your preview to include the status
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-
     val sampleOrders = listOf(
         OrderInfo(
             id = "4002",
@@ -130,6 +153,7 @@ fun GreetingPreview() {
                     imageResId = R.drawable.dummy_food_image
                 )
             ),
+            status = OrderStatus.NEW
         ),
         OrderInfo(
             id = "4003",
@@ -141,22 +165,9 @@ fun GreetingPreview() {
                     quantity = 1,
                     isVeg = true,
                     imageResId = R.drawable.dummy_food_image
-                ),
-                FoodItem(
-                    name = "Food Item 4",
-                    price = 300,
-                    quantity = 2,
-                    isVeg = false,
-                    imageResId = R.drawable.dummy_food_image
-                ),
-                FoodItem(
-                    name = "Food Item 5",
-                    price = 300,
-                    quantity = 2,
-                    isVeg = false,
-                    imageResId = R.drawable.dummy_food_image
                 )
             ),
+            status = OrderStatus.READY
         )
     )
 
@@ -165,6 +176,5 @@ fun GreetingPreview() {
             isDarkModeEnabled = true,
             orders = sampleOrders,
         )
-
     }
 }
