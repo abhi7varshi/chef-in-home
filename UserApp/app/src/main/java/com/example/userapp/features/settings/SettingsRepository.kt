@@ -1,8 +1,9 @@
-package com.example.userapp
+package com.example.userapp.features.settings
 
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.dataStore
+import com.example.userapp.Settings
 
 // Create DataStore instance
 val Context.settingsDataStore: DataStore<Settings> by dataStore(

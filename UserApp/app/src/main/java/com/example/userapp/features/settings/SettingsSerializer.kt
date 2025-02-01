@@ -1,7 +1,8 @@
-package com.example.userapp
+package com.example.userapp.features.settings
 
 import androidx.datastore.core.CorruptionException
 import androidx.datastore.core.Serializer
+import com.example.userapp.Settings
 import java.io.InputStream
 import java.io.OutputStream
 
