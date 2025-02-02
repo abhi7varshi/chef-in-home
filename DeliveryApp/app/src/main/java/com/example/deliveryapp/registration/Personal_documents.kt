@@ -30,6 +30,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.deliveryapp.common_reusable_ui.CommonBox
 import com.example.deliveryapp.common_reusable_ui.CommonMediumAppBar
 
@@ -39,7 +40,7 @@ import com.example.deliveryapp.common_reusable_ui.CommonMediumAppBar
 fun PersonalDocument(){
     Scaffold(
         topBar = {
-           CommonMediumAppBar(text = "Personal documents")
+           CommonMediumAppBar(text = "Personal documents", )
         },
     ) { innerPadding->
        Box(modifier = Modifier.fillMaxSize().padding(innerPadding)) {

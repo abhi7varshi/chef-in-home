@@ -68,7 +68,11 @@ dependencies {
     //room
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
+//    implementation(libs.play.services.maps)
     ksp("androidx.room:room-compiler:2.6.1")
+    //Navigation
+    implementation("androidx.navigation:navigation-compose:2.7.3")
+
 
     //retrofit
     implementation("com.squareup.retrofit2:retrofit:2.11.0")

@@ -35,8 +35,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.deliveryapp.common_reusable_ui.BottomNavigationBar
 import com.example.deliveryapp.dashBoard.AccountScreen
-import com.example.deliveryapp.dashBoard.Orders.DeliveryScreen
 import com.example.deliveryapp.dashBoard.Orders.OrderScreen
+import com.example.deliveryapp.navigation.NavLibrary
 import com.example.deliveryapp.ui.theme.DeliveryAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -49,7 +49,9 @@ class MainActivity : ComponentActivity() {
             DeliveryAppTheme {
 //                PersonalInfo()
 //                HomeScreen()
-                DeliveryScreen(modifier = Modifier)
+//                Welcome()
+                NavLibrary()
+//                DeliveryScreen(modifier = Modifier)
 //                UploadDocument(text = "Driving License")
 //                RegistrationDone()
 //                PersonalDocument()
@@ -60,10 +62,7 @@ class MainActivity : ComponentActivity() {
 }
 
 
-@Composable
-fun customBottomNavigation() {
 
-}
 
 @Composable
 fun HomeScreen() {
