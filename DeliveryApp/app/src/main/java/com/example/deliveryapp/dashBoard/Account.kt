@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material.icons.outlined.Call
 import androidx.compose.material.icons.outlined.DateRange
@@ -131,6 +132,25 @@ fun AccountScreen(
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Outlined.Person,
+                        contentDescription = null,
+                        tint = Color(0xFF0990ff)
+                    )
+                },
+                trailingIcon = {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                        contentDescription = null,
+                        tint = Color(0xFF0990ff)
+                    )
+                }
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            //
+            ProfileCommonBox(
+                text = "Registration",
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Outlined.Call,
                         contentDescription = null,
                         tint = Color(0xFF0990ff)
                     )

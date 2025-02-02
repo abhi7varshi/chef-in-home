@@ -9,6 +9,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -32,6 +33,7 @@ import androidx.compose.material.icons.outlined.KeyboardArrowDown
 import androidx.compose.material.icons.outlined.ShoppingCart
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -52,11 +54,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.deliveryapp.R
 
 //Custom-TextField
@@ -196,18 +200,27 @@ fun CommonOrderBox(
     status: String,
     orderId: String,
     statusColor: Color,
+    isExpanded: Boolean,
+    onSingleTap: () -> Unit,
+    onDoubleTap: () -> Unit,
 ) {
+
+//    val currentOnSingleTap = remember { onSingleTap }
+//    val currentOnDoubleTap = remember { onDoubleTap }
     Surface(
         modifier = Modifier
             .fillMaxWidth()
-            .height(100.dp)
-            .padding(horizontal = 16.dp).clickable {
+            .height(if (isExpanded) 200.dp else 100.dp)
+            .padding(horizontal = 16.dp).pointerInput(Unit) {
+                detectTapGestures (
+                    onTap = { onSingleTap()},
+                    onDoubleTap = {onDoubleTap()}
+                )
                 print("Hello Bhai")
             },
         shape = RoundedCornerShape(10.dp),
         color = MaterialTheme.colorScheme.surfaceContainer,
     ) {
-
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically,
@@ -215,8 +228,8 @@ fun CommonOrderBox(
 
             ) {
                 Column() {
-                    Text(text = "Order No.")
-                    Text(text = "#$orderId")
+                    Text(text = "Order No.", fontWeight = FontWeight.Bold)
+                    Text(text = "#$orderId", style = MaterialTheme.typography.bodyMedium)
                 }
                 Surface(
                     color = statusColor.copy(alpha = 0.2f),
@@ -226,7 +239,7 @@ fun CommonOrderBox(
                         text = status, style = MaterialTheme.typography.titleMedium.copy(
                             fontSize = 12.sp,
                             color = MaterialTheme.colorScheme.onSurface
-                        ), modifier = Modifier.padding(horizontal = 4.dp)
+                        ), modifier = Modifier.padding(horizontal = 4.dp, vertical = 4.dp)
 
                     )
                 }
@@ -281,13 +294,41 @@ fun CommonUploadDocumentBox(
 }
 
 @Composable
+fun CommonCenterAlignedAppBar(
+    text: String,
+    navController: NavController
+) {
+    CenterAlignedTopAppBar(
+        modifier = Modifier,
+        navigationIcon = {
+            IconButton(onClick = {
+                navController.popBackStack()
+            }) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                    contentDescription = "Go Back"
+                )
+            }
+        },
+        title = {
+            Text(
+                text = "$text details",
+                style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.W600)
+            )
+        },
+    )
+}
+
+@Composable
 fun CommonMediumAppBar(
-    text: String
+    text: String,
 ) {
     MediumTopAppBar(
         modifier = Modifier,
         navigationIcon = {
-            IconButton(onClick = {}) {
+            IconButton(onClick = {
+
+            }) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                     contentDescription = "Go Back"
