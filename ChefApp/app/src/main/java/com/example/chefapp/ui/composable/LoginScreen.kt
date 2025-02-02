@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.HorizontalDivider
@@ -34,6 +35,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -69,26 +71,28 @@ fun LoginScreen(
                             popUpTo(0) // Clear back stack
                         }
                     }
+
                     is AuthState.Error -> {
                         Toast.makeText(context, authState.message, Toast.LENGTH_SHORT).show()
                     }
+
                     AuthState.Loading -> {
                         // Optionally show a loading indicator
                         Toast.makeText(context, "Loading...", Toast.LENGTH_SHORT).show()
                     }
+
                     AuthState.Unauthenticated -> {
                         // Stay on login screen or take additional actions
                     }
+
                     null -> {
                         // Handle null state if necessary
                     }
                 }
             }
 
-            // State variables for email and password input
-            val email = remember { mutableStateOf("") }
-            val password = remember { mutableStateOf("") }
-            val passwordVisible = remember { mutableStateOf(false) }
+            // State variables for enter your number
+            val number = remember { mutableStateOf("") }
 
             Image(
                 painter = painterResource(id = R.drawable.header_img),
@@ -112,9 +116,14 @@ fun LoginScreen(
 
             OutlinedTextField(
                 placeholder = { Text(text = "Enter your Number", fontSize = 16.sp) },
-                value = "",
-                onValueChange = {},
+                value = number.value,
+                onValueChange = {
+                    if(it.length <= 10){
+                        number.value = it
+                    }
+                },
                 shape = ShapeDefaults.Medium,
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                 colors = OutlinedTextFieldDefaults.colors(
                     unfocusedBorderColor = Color.Black.copy(
                         alpha = 0.16f
@@ -244,7 +253,7 @@ fun LoginScreen(
 
 @Composable
 @Preview
-fun LoginScreenPreview(){
+fun LoginScreenPreview() {
     LoginScreen(
         navController = NavController(LocalContext.current),
         viewModel = AuthViewModel()

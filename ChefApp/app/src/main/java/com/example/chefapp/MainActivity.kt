@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
         setContent {
            val navController = rememberNavController()
 
-            NavHost(navController = navController, startDestination = IntroductionRoute){
+            NavHost(navController = navController, startDestination = LoginRoute){
 
                 composable<IntroductionRoute>{
                     IntroductionScreen(navController = navController, viewModel = AuthViewModel())
