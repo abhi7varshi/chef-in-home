@@ -9,6 +9,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.userapp.features.auth.LoginScreen
+import com.example.userapp.features.homeScreen.HomeScreen
 import com.example.userapp.ui.theme.UserAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,7 +21,8 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             UserAppTheme {
-                LoginScreen()
+//                LoginScreen()
+                HomeScreen()
             }
         }
     }
