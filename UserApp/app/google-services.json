@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "134807327020",
+    "project_id": "mom-s-kitchen-eafdf",
+    "storage_bucket": "mom-s-kitchen-eafdf.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:134807327020:android:6f5a9f376081067a025c89",
+        "android_client_info": {
+          "package_name": "com.example.userapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "134807327020-ev5ra2p1d53vb7i9qrnkkhvc3r1v64ho.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.userapp",
+            "certificate_hash": "44dcbc44bb6d0eb2b6f2417dd15670ff4ce76612"
+          }
+        },
+        {
+          "client_id": "134807327020-eeuulu48deneogugqh8a7tg1e9l5oo77.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDg93X3YO8DYRFBiMlI9dJaPV-OsDxhg_0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "134807327020-cpudqevde3ouocn4lqb14dvoosvr3qi2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

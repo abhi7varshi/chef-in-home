@@ -6,6 +6,7 @@ plugins {
     id("com.google.devtools.ksp")
     kotlin("plugin.serialization")
     id("com.google.protobuf")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -59,6 +60,15 @@ protobuf {
 }
 
 dependencies {
+    //google fonts
+    implementation("androidx.compose.ui:ui-text-google-fonts:1.7.7")
+
+    //firebase
+    implementation(platform("com.google.firebase:firebase-bom:33.8.0"))
+
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.firebaseui:firebase-ui-auth:7.2.0")
+
     //datastore
     implementation("androidx.datastore:datastore-preferences:1.1.1")
     implementation("androidx.datastore:datastore:1.1.1")
