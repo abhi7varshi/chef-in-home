@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.example.userapp.composables.AppMainSearchTextField
 import com.example.userapp.features.homeScreen.components.FoodTypesHomeScreenCircleGrid
+import com.example.userapp.features.homeScreen.components.MultipleHomeScreenRestroCards
 import com.example.userapp.features.homeScreen.components.ScrollableCards
 import com.example.userapp.features.homeScreen.components.TopAppBarComposable
 import androidx.compose.ui.graphics.Color as ComposeColor
@@ -48,6 +49,7 @@ fun HomeScreen() {
             AppMainSearchTextField()
             ScrollableCards()
             FoodTypesHomeScreenCircleGrid("What’s mom cooking for you today?")
+            MultipleHomeScreenRestroCards(noOfRestaurantsAround = 123)
         }
     }
 }

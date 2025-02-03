@@ -27,15 +27,15 @@ fun FoodTypesHomeScreenCircleGrid(text: String? = null) {
                 text = text,
                 color = Color.Black,
                 fontWeight = FontWeight.Bold,
-                fontSize = 20.sp,
+                fontSize = 16.sp,
                 modifier = Modifier.padding(horizontal = 5.dp, vertical = 12.dp)
             )
         }
 
         val foodItems = listOf(
             Pair("Idli", R.drawable.food_image_01),
-            Pair("Dosa", R.drawable.food_image_02),
-            Pair("Chitranna", R.drawable.food_image_03),
+            Pair("Chitranna", R.drawable.food_image_02),
+            Pair("Dosa", R.drawable.food_image_03),
             Pair("Chole Bhature", R.drawable.food_image_04),
             Pair("Khichadi", R.drawable.food_image_05),
             Pair("Pani Puri", R.drawable.food_image_06),

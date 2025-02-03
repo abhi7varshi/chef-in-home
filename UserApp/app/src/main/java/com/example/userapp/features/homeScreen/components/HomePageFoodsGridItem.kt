@@ -34,6 +34,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -75,6 +76,7 @@ fun HomePageFoodsGridItem(
         )
         Text(
             text = title,
+            fontSize = 12.sp,
             fontWeight = FontWeight.Bold,
             style = TextStyle(color = Color.DarkGray),
             textAlign = TextAlign.Center,
