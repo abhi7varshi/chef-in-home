@@ -60,6 +60,9 @@ protobuf {
 }
 
 dependencies {
+    //Splash Screen
+    implementation("androidx.core:core-splashscreen:1.0.0")
+
     //google fonts
     implementation("androidx.compose.ui:ui-text-google-fonts:1.7.7")
 
