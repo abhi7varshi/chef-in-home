@@ -36,8 +36,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             UserAppTheme {
-//                LoginScreen()
-                HomeScreen()
+                Navigation()
             }
         }
     }
