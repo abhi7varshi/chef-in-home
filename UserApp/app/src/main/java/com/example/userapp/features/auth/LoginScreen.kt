@@ -12,38 +12,57 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.ShapeDefaults
+import androidx.compose.material3.Snackbar
+import androidx.compose.material3.SnackbarData
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
+import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.userapp.R
 import com.example.userapp.ui.theme.Green
 import com.example.userapp.ui.theme.UserAppTheme
+import kotlinx.coroutines.launch
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(navController: NavController) {
+
     Scaffold { innerPadding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
+            var phone by remember { mutableStateOf("") }
+            val snackbarHostState = remember {SnackbarHostState()}
+            val coroutine = rememberCoroutineScope()
             Image(
                 painter = painterResource(id = R.drawable.header_img),
                 contentDescription = "",
@@ -66,9 +85,14 @@ fun LoginScreen() {
 
             OutlinedTextField(
                 placeholder = { Text(text = "Enter your Number", fontSize = 16.sp) },
-                value = "",
-                onValueChange = {},
+                value = phone,
+                onValueChange = {
+                    if (it.length <= 10){
+                        phone = it
+                    }
+                                },
                 shape = ShapeDefaults.Medium,
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
                 colors = OutlinedTextFieldDefaults.colors(
                     unfocusedBorderColor = Color.Black.copy(
                         alpha = 0.16f
@@ -92,7 +116,7 @@ fun LoginScreen() {
 
                         Spacer(modifier = Modifier.width(16.dp))
 
-                        Text(text = "|", fontSize = 20.sp)
+                        VerticalDivider(modifier = Modifier.height(20.dp))
 
                         Spacer(modifier = Modifier.width(8.dp))
                     }
@@ -105,7 +129,17 @@ fun LoginScreen() {
             Spacer(modifier = Modifier.height(16.dp))
 
             Button(
-                onClick = {},
+                onClick = {
+                   if (phone.length==10){
+                       navController.navigate("otpVerification/$phone")
+                   }
+                    else
+                   {
+                       coroutine.launch {
+                           snackbarHostState.showSnackbar("Enter a valid 10 digit number."      )
+                       }
+                   }
+                },
                 shape = ShapeDefaults.Medium,
                 colors = ButtonDefaults.buttonColors(containerColor = Green),
                 modifier = Modifier
@@ -124,8 +158,8 @@ fun LoginScreen() {
 
             Text(
                 text = "By clicking in, I accept the terms of service & privacy policy.",
-                fontSize = 8.sp,
                 textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.bodySmall,
                 modifier = Modifier.fillMaxWidth()
             )
 
@@ -184,7 +218,7 @@ fun LoginScreen() {
                         text = "Continue with Google",
                         fontSize = 16.sp,
                         fontWeight = FontWeight.W500,
-                        color = Green,
+                        color = MaterialTheme.colorScheme.secondary,
                         modifier = Modifier.padding(vertical = 8.dp)
                     )
                 }
@@ -197,6 +231,6 @@ fun LoginScreen() {
 @Composable
 private fun LoginScreenPreview() {
     UserAppTheme {
-        LoginScreen()
+        LoginScreen(navController = rememberNavController())
     }
 }
