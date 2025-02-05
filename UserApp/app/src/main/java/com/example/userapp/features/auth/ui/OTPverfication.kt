@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
 
-package com.example.userapp.features.auth
+package com.example.userapp.features.auth.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
