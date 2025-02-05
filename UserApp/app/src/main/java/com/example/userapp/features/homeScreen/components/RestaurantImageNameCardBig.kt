@@ -255,7 +255,9 @@ fun ImageBigCard(
                     }
                     Card(
                         shape = RoundedCornerShape(6.dp),
-//                        backgroundColor = Color.White
+                        colors = CardDefaults.cardColors(
+                            containerColor = Color.White,
+                        ),
                     ) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
@@ -384,7 +386,7 @@ fun ContentBigCard(
                 )
                 Text(
                     modifier = Modifier.padding(3.dp),
-                    text = "Zomato recycles more plastic than used in orders",
+                    text = "We recycle more plastic than used in orders",
                     fontSize = 10.sp,
                     color = Color.DarkGray,
                     fontWeight = FontWeight.SemiBold

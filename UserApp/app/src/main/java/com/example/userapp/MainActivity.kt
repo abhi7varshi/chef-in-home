@@ -84,7 +84,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             UserAppTheme {
-//                Navigation()
+                Navigation()
 //                LoginScreen()
 //                HomeScreen()
 //                GoogleSignInScreen(
@@ -92,11 +92,11 @@ class MainActivity : ComponentActivity() {
 //                    onSignOutClick = { signOut() },
 //                    user = auth.currentUser
 //                )
-                GoogleAndPhoneAuthScreen(
-                    onGoogleSignInClick = { launchGoogleSignIn() },
-                    onSignOutClick = { signOut() },
-                    user = auth.currentUser,
-                )
+//                GoogleAndPhoneAuthScreen(
+//                    onGoogleSignInClick = { launchGoogleSignIn() },
+//                    onSignOutClick = { signOut() },
+//                    user = auth.currentUser,
+//                )
             }
         }
     }

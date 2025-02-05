@@ -5,15 +5,20 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.userapp.features.homeScreen.HomeScreen
+import com.example.userapp.features.restaurantScreen.RestaurantScreen
 
 @Composable
 fun Navigation(){
 
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = HomeScreenRoute){
+    NavHost(navController = navController, startDestination = RestaurantScreenRoute){
         composable<HomeScreenRoute>{
             HomeScreen()
+        }
+
+        composable<RestaurantScreenRoute>{
+            RestaurantScreen()
         }
     }
 
