@@ -22,6 +22,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.AccountCircle
@@ -57,6 +58,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -70,8 +72,8 @@ fun CustomTextFieldWithIcon(
     value: String,
     onValueChange: (String) -> Unit,
     label: String,
-    icon: @Composable (() -> Unit)? = null,
     trailingIcon: @Composable (() -> Unit)? = null,
+    leadingIcon: @Composable (() -> Unit)? = null,
     modifier: Modifier = Modifier,
 
     ) {
@@ -93,7 +95,7 @@ fun CustomTextFieldWithIcon(
             value = value,
             onValueChange = onValueChange,
             shape = RoundedCornerShape(12.dp),
-            leadingIcon = icon,
+            leadingIcon = leadingIcon,
             trailingIcon = trailingIcon,
             label = { Text(text = label) },
             maxLines = 1,
@@ -101,11 +103,11 @@ fun CustomTextFieldWithIcon(
                 .fillMaxWidth()
                 .padding(
                     horizontal = 10.dp
-                )
+                ),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         Spacer(modifier = modifier.height(8.dp))
     }
-
 }
 
 @Composable
@@ -312,7 +314,7 @@ fun CommonCenterAlignedAppBar(
         },
         title = {
             Text(
-                text = "$text details",
+                text = "$text",
                 style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.W600)
             )
         },
@@ -412,56 +414,10 @@ fun BottomNavigationBar(
                 }
             }
         }
-//        NavigationBarItem(
-//
-//            selected = selectedTab.value=="Orders",
-//            onClick = {
-//                selectedTab.value="Orders"
-//                      },
-//            icon = {
-//                Icon(
-//                    imageVector = Icons.Default.ShoppingCart, contentDescription = "Orders",)
-//            },
-//            enabled = selectedTab.value=="Orders",
-//            label = {
-//                Text(
-//                    text = "Order",
-//                    style = MaterialTheme.typography.titleSmall.copy(
-//                        fontWeight = FontWeight.W500
-//                    ))
-//            },
-//            alwaysShowLabel = true,
-//            colors = NavigationBarItemDefaults.colors(
-//                selectedIconColor = Color.White,
-//                unselectedIconColor = Color.Black,
-//                selectedTextColor = Color.White,
-//                unselectedTextColor = Color.Black,
-//                indicatorColor = MaterialTheme.colorScheme.primary
-//            ),
-//        )
-//        NavigationBarItem(
-//            selected = selectedTab.value == "Account",
-//            onClick = {
-//                selectedTab.value = "Account"
-//            },
-//            icon = {
-//                Icon(imageVector = Icons.Default.AccountCircle,contentDescription = "Accounts")
-//            },
-//            enabled = selectedTab.value=="Accounts",
-//            label = {
-//                Text(text = "Accounts", style = MaterialTheme.typography.titleSmall.copy(
-//                    fontWeight = FontWeight.W500
-//                ))
-//            },
-//            alwaysShowLabel = true,
-//            colors = NavigationBarItemDefaults.colors(
-//                selectedIconColor = Color.White,
-//                unselectedIconColor = Color.Black,
-//                selectedTextColor = Color.White,
-//                unselectedTextColor = Color.Black,
-//                indicatorColor = MaterialTheme.colorScheme.primary
-//            ),
-//        )
-
     }
+}
+
+@Composable
+fun otpInput(){
+
 }

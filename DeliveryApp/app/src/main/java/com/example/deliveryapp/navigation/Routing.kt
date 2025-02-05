@@ -27,7 +27,7 @@ fun NavLibrary() {
 
     NavHost(
         navController = navController,
-        startDestination = Routes.Welcome.name,
+        startDestination = Routes.SignIn.name,
     ) {
         composable (Routes.Welcome.name) {
             Welcome(navController = navController)

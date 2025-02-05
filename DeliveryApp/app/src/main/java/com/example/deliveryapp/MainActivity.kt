@@ -37,6 +37,7 @@ import com.example.deliveryapp.common_reusable_ui.BottomNavigationBar
 import com.example.deliveryapp.dashBoard.AccountScreen
 import com.example.deliveryapp.dashBoard.Orders.OrderScreen
 import com.example.deliveryapp.navigation.NavLibrary
+import com.example.deliveryapp.registration.PersonalInfo
 import com.example.deliveryapp.ui.theme.DeliveryAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -46,7 +47,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            DeliveryAppTheme {
+            DeliveryAppTheme() {
 //                PersonalInfo()
 //                HomeScreen()
 //                Welcome()

@@ -80,7 +80,7 @@ fun SignUP(modifier: Modifier,navController: NavController) {
               CustomTextFieldWithIcon(
                   modifier = Modifier,
                   onValueChange = { emailId = it },
-                  icon = { Icon(imageVector = Icons.Default.Email, contentDescription = null) },
+                  leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = null) },
                   value = emailId,
                   label = "ex-abc@gmail.com",
                   textValue = "Enter Your Email",
@@ -89,7 +89,7 @@ fun SignUP(modifier: Modifier,navController: NavController) {
               CustomTextFieldWithIcon(
                   modifier = Modifier,
                   onValueChange = { pass = it },
-                  icon = { Icon(imageVector = Icons.Default.Lock, contentDescription = null) },
+                  leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = null) },
                   value = pass,
                   label = "xxxxxxx",
                   textValue = "Enter Your Password"
@@ -99,7 +99,7 @@ fun SignUP(modifier: Modifier,navController: NavController) {
               CustomTextFieldWithIcon(
                   modifier = Modifier,
                   onValueChange = { confirmPass = it },
-                  icon = { Icon(imageVector = Icons.Default.Lock, contentDescription = null) },
+                  leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = null) },
                   value = confirmPass,
                   label = "xxxxxxx",
                   textValue = "Confirm your Password"

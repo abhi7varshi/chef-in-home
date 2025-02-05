@@ -6,6 +6,7 @@ plugins {
     id("com.google.devtools.ksp")
     kotlin("plugin.serialization")
     id("com.google.protobuf")
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -59,6 +60,11 @@ protobuf {
 }
 
 dependencies {
+    //Live data (deprecated)
+    implementation("androidx.compose.runtime:runtime:1.7.6")
+    implementation("androidx.compose.runtime:runtime-livedata:1.7.6")
+    implementation("androidx.compose.runtime:runtime-rxjava2:1.7.6")
+
     //datastore
     implementation("androidx.datastore:datastore-preferences:1.1.1")
     implementation("androidx.datastore:datastore:1.1.1")
@@ -68,6 +74,7 @@ dependencies {
     //room
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
+    implementation(libs.firebase.auth)
     ksp("androidx.room:room-compiler:2.6.1")
 
     //retrofit
@@ -91,6 +98,10 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.8.4")
     //co-routines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+
+    //coil - image picking library
+    implementation("io.coil-kt.coil3:coil-compose:3.0.4")
+    implementation("io.coil-kt.coil3:coil-network-okhttp:3.0.4")
 
     //core
     implementation(libs.androidx.core.ktx)
