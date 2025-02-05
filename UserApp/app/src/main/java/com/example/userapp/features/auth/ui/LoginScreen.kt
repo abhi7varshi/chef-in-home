@@ -1,4 +1,4 @@
-package com.example.userapp.features.auth
+package com.example.userapp.features.auth.ui
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image

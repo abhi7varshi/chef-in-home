@@ -68,6 +68,8 @@ dependencies {
 
     implementation("com.google.firebase:firebase-auth")
     implementation("com.firebaseui:firebase-ui-auth:7.2.0")
+    implementation("com.google.android.gms:play-services-auth:21.3.0")
+    implementation("com.msg91.lib:sendotp:1.0.0")
 
     //datastore
     implementation("androidx.datastore:datastore-preferences:1.1.1")
