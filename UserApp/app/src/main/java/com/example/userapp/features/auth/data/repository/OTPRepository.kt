@@ -1,5 +1,6 @@
 package com.example.userapp.features.auth.data.repository
 
+import com.example.userapp.BuildConfig
 import com.example.userapp.features.auth.data.remote.TwilioApi
 import okhttp3.Credentials
 import javax.inject.Inject
@@ -9,8 +10,8 @@ class OTPRepository @Inject constructor(
 ) {
     //Twilio account credentials
     private val authCredentials = Credentials.basic(
-        "ACbb5c91cc4d03ac7e5784b497a7480bca", //account ssid
-        "6869a233c403472cf036df6f56954fd9", //auth token
+        BuildConfig.TWILIO_ACCOUNT_SID,
+        BuildConfig.TWILIO_AUTH_TOKEN
     )
 
     suspend fun sendOTP(phoneNumber: String) =
