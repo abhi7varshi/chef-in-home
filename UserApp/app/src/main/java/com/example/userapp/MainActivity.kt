@@ -12,10 +12,12 @@ import androidx.activity.viewModels
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.userapp.features.auth.ui.GoogleAndPhoneAuthScreen
 import com.example.userapp.features.auth.ui.LoginViewModel
+import com.example.userapp.features.restaurantScreen.RestaurantScreen
 import com.example.userapp.ui.theme.UserAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,6 +34,8 @@ class MainActivity : ComponentActivity() {
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Ensure the splash screen is properly set up and call before super.onCreate()
+        installSplashScreen()
         super.onCreate(savedInstanceState)
 
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)

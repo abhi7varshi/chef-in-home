@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--root theme-->
     <style name="Theme.UserApp" parent="android:Theme.Material.Light.NoActionBar" />
-    <style name="FirebaseAuthTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorAccent">@color/teal_200</item>
+
+    <!--splash-screen theme-->
+    <style name="Theme.UserApp.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#FFFFFF</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/user_app_splash_logo</item>
+        <item name="postSplashScreenTheme">@style/Theme.UserApp</item>
     </style>
 </resources>
