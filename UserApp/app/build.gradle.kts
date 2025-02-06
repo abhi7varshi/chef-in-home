@@ -1,3 +1,6 @@
+import java.util.Properties
+
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -21,6 +24,16 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        val localProperties = rootProject.file("local.properties")
+        val properties = Properties()
+        properties.load(localProperties.inputStream())
+
+        val twilioAccountSid = properties.getProperty("TWILIO_ACCOUNT_SID", "MISSING_SID")
+        val twilioAuthToken = properties.getProperty("TWILIO_AUTH_TOKEN", "MISSING_TOKEN")
+
+        buildConfigField("String", "TWILIO_ACCOUNT_SID", "\"$twilioAccountSid\"")
+        buildConfigField("String", "TWILIO_AUTH_TOKEN", "\"$twilioAuthToken\"")
     }
 
     buildTypes {
@@ -32,15 +45,19 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     kotlinOptions {
         jvmTarget = "11"
     }
+
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 

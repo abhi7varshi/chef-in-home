@@ -14,8 +14,7 @@ class SharedPreferencesStorage @Inject constructor(
     private val prefs: SharedPreferences
 ) : LocalStorage {
     private val json = Json { ignoreUnknownKeys = true }
-
-
+    
     override fun saveOTPVerificationResponse(response: TwilioVerificationResponse) {
         val jsonString = json.encodeToString(response)
         prefs.edit().putString(KEY_VERIFICATION_RESPONSE, jsonString).apply()
