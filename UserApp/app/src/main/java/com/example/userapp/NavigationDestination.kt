@@ -7,3 +7,6 @@ data object HomeScreenRoute
 
 @Serializable
 data object RestaurantScreenRoute
+
+@Serializable
+data object PaymentScreenRoute
