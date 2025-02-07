@@ -30,11 +30,7 @@ fun NavLibrary() {
         composable (Routes.SignIn.name) {
             LoginScreen(navController = navController)
         }
-//        composable (Routes.OtpVerification.name) {backStackEntry ->
-//            val phoneNumber = backStackEntry.arguments?.getString("phoneNumber") ?: ""
-//            OTPVerification(number = phoneNumber,navController = navController)
-//        }
-        composable("otpVerification/{phoneNumber}") { backStackEntry ->  // Use correct route string
+        composable("otpVerification/{phoneNumber}") { backStackEntry ->
             val phoneNumber = backStackEntry.arguments?.getString("phoneNumber") ?: ""
             OTPVerification(number = phoneNumber, navController = navController)
         }

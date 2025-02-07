@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<osm-config
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Where you want to store the map tiles cache. -->
+    <storage
+        android:path="/osmdroid" />
+
+</osm-config>

@@ -24,6 +24,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.Snackbar
 import androidx.compose.material3.SnackbarData
+import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.VerticalDivider
@@ -53,16 +54,17 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun LoginScreen(navController: NavController) {
+    val snackbarHostState = remember {SnackbarHostState()}
 
-    Scaffold { innerPadding ->
+    Scaffold ( snackbarHost = { SnackbarHost(snackbarHostState) }){ innerPadding ->
+        val coroutine = rememberCoroutineScope()
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
             var phone by remember { mutableStateOf("") }
-            val snackbarHostState = remember {SnackbarHostState()}
-            val coroutine = rememberCoroutineScope()
+
             Image(
                 painter = painterResource(id = R.drawable.header_img),
                 contentDescription = "",
