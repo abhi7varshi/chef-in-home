@@ -32,12 +32,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.userapp.R
+import com.example.userapp.navigation.OTPVerifyRoute
 import com.example.userapp.ui.theme.Green
 import com.example.userapp.ui.theme.UserAppTheme
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(
+    navController: NavController = rememberNavController()
+) {
     Scaffold { innerPadding ->
         Column(
             modifier = Modifier
@@ -105,7 +110,9 @@ fun LoginScreen() {
             Spacer(modifier = Modifier.height(16.dp))
 
             Button(
-                onClick = {},
+                onClick = {
+                    navController.navigate(route = OTPVerifyRoute)
+                },
                 shape = ShapeDefaults.Medium,
                 colors = ButtonDefaults.buttonColors(containerColor = Green),
                 modifier = Modifier
@@ -162,7 +169,9 @@ fun LoginScreen() {
             Spacer(modifier = Modifier.height(16.dp))
 
             OutlinedButton(
-                onClick = {},
+                onClick = {
+                    //navigate to location.
+                },
                 shape = ShapeDefaults.Medium,
                 border = BorderStroke(width = 1.dp, color = Color.Black.copy(alpha = 0.16f)),
                 modifier = Modifier

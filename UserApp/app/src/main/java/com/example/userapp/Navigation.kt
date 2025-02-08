@@ -9,7 +9,6 @@ import com.example.userapp.features.restaurantScreen.RestaurantScreen
 
 @Composable
 fun Navigation(){
-
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = RestaurantScreenRoute){
@@ -21,5 +20,4 @@ fun Navigation(){
             RestaurantScreen()
         }
     }
-
 }

@@ -1,12 +1,12 @@
 package com.example.userapp.features.auth.data.repository
 
 import com.example.userapp.BuildConfig
-import com.example.userapp.features.auth.data.remote.TwilioApi
+import com.example.userapp.features.auth.data.TwilioNetworkDataSource
 import okhttp3.Credentials
 import javax.inject.Inject
 
 class OTPRepository @Inject constructor(
-    private val networkApi: TwilioApi,
+    private val networkApi: TwilioNetworkDataSource,
 ) {
     //Twilio account credentials
     private val authCredentials = Credentials.basic(
