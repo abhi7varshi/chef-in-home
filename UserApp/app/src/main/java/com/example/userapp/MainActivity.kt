@@ -11,6 +11,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.example.userapp.features.Navigation.NavLibrary
 import com.example.userapp.features.auth.LoginScreen
+import com.example.userapp.features.homeScreen.AccountScreen
 import com.example.userapp.ui.theme.UserAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,7 +23,8 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             UserAppTheme {
-                NavLibrary()
+                AccountScreen()
+//                NavLibrary()
             }
         }
     }
