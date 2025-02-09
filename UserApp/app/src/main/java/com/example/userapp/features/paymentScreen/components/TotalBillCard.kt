@@ -13,9 +13,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.userapp.R
 
 @Composable
@@ -50,7 +52,9 @@ fun TotalBillCard() {
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
                     text = "Total Bill ₹112",
-                    textAlign = TextAlign.Start
+                    textAlign = TextAlign.Start,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold
                 )
             }
 
@@ -64,11 +68,11 @@ fun TotalBillCard() {
         }
 
         AnimatedVisibility(visible = expanded) {
-            Column(modifier = Modifier.padding(top = 12.dp)) {
+            Column(modifier = Modifier.padding(top = 12.dp, start = 16.dp, end = 16.dp, bottom = 12.dp)) {
                 BillDetailRow("Order Total", "₹89")
                 BillDetailRow("Taxes & Charges", "₹13")
                 BillDetailRow("Delivery Fees", "₹10")
-                Divider(modifier = Modifier.padding(vertical = 4.dp))
+                Divider(modifier = Modifier.padding(vertical = 8.dp))
                 BillDetailRow("To Pay", "₹112", isTotal = true)
             }
         }
@@ -78,18 +82,23 @@ fun TotalBillCard() {
 @Composable
 fun BillDetailRow(label: String, amount: String, isTotal: Boolean = false) {
     Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 4.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
             text = label,
-            style = if (isTotal) MaterialTheme.typography.bodyLarge.copy(color = MaterialTheme.colorScheme.primary)
-            else MaterialTheme.typography.bodyMedium
+            fontSize = if (isTotal) 18.sp else 14.sp,
+            fontWeight = if (isTotal) FontWeight.Bold else FontWeight.Normal,
+            color = if (isTotal) MaterialTheme.colorScheme.primary else Color.Black
         )
         Text(
             text = amount,
-            style = if (isTotal) MaterialTheme.typography.bodyLarge.copy(color = MaterialTheme.colorScheme.primary)
-            else MaterialTheme.typography.bodyMedium
+            fontSize = if (isTotal) 18.sp else 14.sp,
+            fontWeight = if (isTotal) FontWeight.Bold else FontWeight.Normal,
+            color = if (isTotal) MaterialTheme.colorScheme.primary else Color.Black
         )
     }
 }
