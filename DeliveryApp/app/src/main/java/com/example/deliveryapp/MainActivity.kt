@@ -35,6 +35,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.deliveryapp.common_reusable_ui.BottomNavigationBar
 import com.example.deliveryapp.dashBoard.AccountScreen
+import com.example.deliveryapp.dashBoard.Orders.MapScreen
 import com.example.deliveryapp.dashBoard.Orders.OrderScreen
 import com.example.deliveryapp.navigation.NavLibrary
 import com.example.deliveryapp.registration.PersonalInfo
@@ -51,7 +52,9 @@ class MainActivity : ComponentActivity() {
 //                PersonalInfo()
 //                HomeScreen()
 //                Welcome()
-                NavLibrary()
+
+//                MapScreen()
+//                NavLibrary()
 //                DeliveryScreen(modifier = Modifier)
 //                UploadDocument(text = "Driving License")
 //                RegistrationDone()

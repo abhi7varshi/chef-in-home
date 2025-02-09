@@ -73,6 +73,10 @@ dependencies {
     //Navigation
     implementation("androidx.navigation:navigation-compose:2.7.3")
 
+    //Map
+    implementation ("org.osmdroid:osmdroid-android:6.1.15")
+    implementation ("com.google.accompanist:accompanist-permissions:0.30.1")
+
 
     //retrofit
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
