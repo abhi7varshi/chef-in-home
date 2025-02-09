@@ -54,7 +54,6 @@ fun TotalBillCard() {
                     text = "Total Bill ₹112",
                     textAlign = TextAlign.Start,
                     fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold
                 )
             }
 
