@@ -32,6 +32,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.userapp.R
@@ -41,7 +42,8 @@ import com.example.userapp.ui.theme.UserAppTheme
 
 @Composable
 fun LoginScreen(
-    navController: NavController = rememberNavController()
+    navController: NavController = rememberNavController(),
+    loginViewModel: LoginViewModel = hiltViewModel()
 ) {
     Scaffold { innerPadding ->
         Column(
@@ -111,7 +113,8 @@ fun LoginScreen(
 
             Button(
                 onClick = {
-                    navController.navigate(route = OTPVerifyRoute)
+                    loginViewModel.register("", "", "")
+                    navController.navigate(route = OTPVerifyRoute(phoneNumber = "9632094750"))
                 },
                 shape = ShapeDefaults.Medium,
                 colors = ButtonDefaults.buttonColors(containerColor = Green),
@@ -131,7 +134,7 @@ fun LoginScreen(
 
             Text(
                 text = "By clicking in, I accept the terms of service & privacy policy.",
-                fontSize = 8.sp,
+                fontSize = 10.sp,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth()
             )

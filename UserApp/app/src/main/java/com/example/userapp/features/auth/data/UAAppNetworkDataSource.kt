@@ -6,8 +6,8 @@ import retrofit2.Response
 interface UAAppNetworkDataSource {
     suspend fun register(
         appId: String,
-        phoneNumber: String,
+        phoneNumber: String?,
         userName: String,
-        email: String
+        email: String?
     ): Response<ResponseBody>
 }

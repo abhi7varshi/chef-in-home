@@ -66,8 +66,7 @@ internal class RetrofitTwilioNetwork @Inject constructor(
         networkApi.sendOTP(
             phoneNumber = phoneNumber,
             channel = channel,
-            authHeader =
-            authHeader
+            authHeader = authHeader
         )
 
     override suspend fun verifyOTP(

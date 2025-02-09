@@ -58,7 +58,9 @@ data object AccountRoute
 data object LoginRoute
 
 @Serializable
-data object OTPVerifyRoute
+data class OTPVerifyRoute(
+    val phoneNumber: String
+)
 
 @Serializable
 data object LocationRoute

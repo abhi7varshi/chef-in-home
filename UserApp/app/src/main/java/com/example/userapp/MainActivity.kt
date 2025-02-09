@@ -41,8 +41,8 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // Ensure the splash screen is properly set up and call before super.onCreate()
-        installSplashScreen()
         super.onCreate(savedInstanceState)
+        installSplashScreen()
 
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
         WindowCompat.setDecorFitsSystemWindows(window, false)
@@ -53,21 +53,21 @@ class MainActivity : ComponentActivity() {
 
                 //LaunchedEffect is used for collecting flows that trigger one-time effects,
                 // like launching an activity result.
-                LaunchedEffect(Unit) {
-                    viewModel.googleSignInIntent.collect { intentSender ->
-                        intentSender?.let {
-                            googleSignInLauncher.launch(IntentSenderRequest.Builder(it).build())
-                        }
-                    }
-                }
+//                LaunchedEffect(Unit) {
+//                    viewModel.googleSignInIntent.collect { intentSender ->
+//                        intentSender?.let {
+//                            googleSignInLauncher.launch(IntentSenderRequest.Builder(it).build())
+//                        }
+//                    }
+//                }
+//
+//                GoogleAndPhoneAuthScreen(
+//                    user = uiState.user,
+//                    onGoogleSignInClick = { viewModel.launchGoogleSignIn() },
+//                    onSignOutClick = { viewModel.signOut() }
+//                )
 
-                GoogleAndPhoneAuthScreen(
-                    user = uiState.user,
-                    onGoogleSignInClick = { viewModel.launchGoogleSignIn() },
-                    onSignOutClick = { viewModel.signOut() }
-                )
-
-//                UAApp()
+                UAApp()
             }
         }
     }

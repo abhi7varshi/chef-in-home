@@ -1,5 +1,6 @@
 package com.example.userapp.features.auth.ui
 
+import android.app.Application
 import android.content.Intent
 import android.content.IntentSender
 import android.util.Log
@@ -28,7 +29,8 @@ class LoginViewModel @Inject constructor(
     private val otpRepository: OTPRepository,
     private val localStorage: LocalStorage,
     private val firebaseAuth: FirebaseAuth,
-    private val oneTapClient: SignInClient
+    private val oneTapClient: SignInClient,
+    private val application: Application
 ) : ViewModel() {
 
     //app state
@@ -138,6 +140,18 @@ class LoginViewModel @Inject constructor(
                 Log.d(TAG, "error: ${e.message}")
                 e.printStackTrace()
                 _uiState.update { it.copy(isLoading = false) }
+            }
+        }
+    }
+
+    fun register(phoneNumber: String, userName: String, email: String) {
+        viewModelScope.launch {
+            val appId = application.packageName
+
+            try {
+                val response =
+            } catch (e: Exception) {
+
             }
         }
     }
