@@ -13,8 +13,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun PaymentScreenTopAppBar() {
@@ -26,14 +29,21 @@ fun PaymentScreenTopAppBar() {
             .fillMaxWidth()
             .padding(5.dp)
     ) {
-        Icon(Icons.Default.ArrowBack, contentDescription = "Back Arrow", tint = Color.Black)
-
         Row(
-            modifier = Modifier.weight(1f),
-            horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(text = "Annapurna Kitchen", color = Color.Black)
+            Icon(
+                Icons.Default.ArrowBack,
+                contentDescription = "Back Arrow",
+                tint = Color.Black
+            )
+            Text(
+                text = "Annapurna Kitchen",
+                color = Color.Black,
+                fontWeight = FontWeight.Bold,
+                fontSize = 16.sp,
+                modifier = Modifier.padding(start = 8.dp)
+            )
         }
 
         Icon(
@@ -43,4 +53,10 @@ fun PaymentScreenTopAppBar() {
             modifier = Modifier.padding(iconPadding)
         )
     }
+}
+
+@Preview
+@Composable
+fun PaymentScreenTopAppBarPreview() {
+    PaymentScreenTopAppBar()
 }

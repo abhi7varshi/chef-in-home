@@ -31,44 +31,45 @@ fun TotalBillCard() {
             .padding(8.dp)
             .clickable { expanded = !expanded }
     ) {
-        Column(modifier = Modifier.padding(12.dp)) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(12.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            // Left: Receipt Icon and Text
             Row(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.weight(1f)
             ) {
-                // Left: Receipt Icon
                 Image(
                     painter = painterResource(R.drawable.receipt_text),
                     contentDescription = "Receipt Icon",
                     modifier = Modifier.size(24.dp)
                 )
-
-                // Center: Text
+                Spacer(modifier = Modifier.width(8.dp))
                 Text(
                     text = "Total Bill ₹112",
-                    modifier = Modifier.weight(1f),
-                    textAlign = TextAlign.Center
-                )
-
-                // Right: Expand/Collapse Icon
-                Icon(
-                    imageVector = if (expanded) Icons.Outlined.KeyboardArrowDown else Icons.Outlined.KeyboardArrowRight,
-                    contentDescription = "Expand/Collapse",
-                    tint = Color.Black,
-                    modifier = Modifier.size(24.dp)
+                    textAlign = TextAlign.Start
                 )
             }
 
-            AnimatedVisibility(visible = expanded) {
-                Column(modifier = Modifier.padding(top = 12.dp)) {
-                    BillDetailRow("Order Total", "₹89")
-                    BillDetailRow("Taxes & Charges", "₹13")
-                    BillDetailRow("Delivery Fees", "₹10")
-                    Divider(modifier = Modifier.padding(vertical = 4.dp))
-                    BillDetailRow("To Pay", "₹112", isTotal = true)
-                }
+            // Right: Expand/Collapse Icon
+            Icon(
+                imageVector = if (expanded) Icons.Outlined.KeyboardArrowDown else Icons.Outlined.KeyboardArrowRight,
+                contentDescription = "Expand/Collapse",
+                tint = Color.Black,
+                modifier = Modifier.size(24.dp)
+            )
+        }
+
+        AnimatedVisibility(visible = expanded) {
+            Column(modifier = Modifier.padding(top = 12.dp)) {
+                BillDetailRow("Order Total", "₹89")
+                BillDetailRow("Taxes & Charges", "₹13")
+                BillDetailRow("Delivery Fees", "₹10")
+                Divider(modifier = Modifier.padding(vertical = 4.dp))
+                BillDetailRow("To Pay", "₹112", isTotal = true)
             }
         }
     }

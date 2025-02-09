@@ -33,22 +33,24 @@ fun DiscountCard() {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(12.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-                // Left: Discount Icon
+            // Left: Discount Icon and Text
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.weight(1f)
+            ) {
                 Image(
                     painter = painterResource(R.drawable.discount_shape),
                     contentDescription = "Discount Icon",
                     modifier = Modifier.size(24.dp)
                 )
-
-                // Center: Text
+                Spacer(modifier = Modifier.width(8.dp))
                 Text(
                     text = "View all Discounts",
-                    modifier = Modifier.weight(1f),
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Start
                 )
+            }
 
             // Right: Arrow Icon
             Icon(
@@ -58,7 +60,6 @@ fun DiscountCard() {
                 modifier = Modifier.size(24.dp) // Adjust size if needed
             )
         }
-
     }
 }
 

@@ -25,7 +25,7 @@ fun PaymentScreenLocationCard() {
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface,
         ),
-        border = BorderStroke(1.dp, Color.Black),
+        border = BorderStroke(0.5.dp, Color.Gray ),
         modifier = Modifier
             .fillMaxWidth()
             .padding(12.dp)
