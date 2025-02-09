@@ -147,12 +147,6 @@ class LoginViewModel @Inject constructor(
     fun register(phoneNumber: String, userName: String, email: String) {
         viewModelScope.launch {
             val appId = application.packageName
-
-            try {
-                val response =
-            } catch (e: Exception) {
-
-            }
         }
     }
 }
