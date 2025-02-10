@@ -59,6 +59,7 @@ import androidx.compose.material3.ShapeDefaults
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.ImeAction
 import com.example.deliveryapp.navigation.Routes
+import kotlinx.coroutines.selects.select
 
 @Composable
 fun OtpInput(
@@ -339,27 +340,33 @@ fun CommonOrderBox(
                    }
                     else
                    {
-                       Text(text =  "✅ Paid", color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold)
+                       Text(text =  "⌛ Pending", color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold)
                    }
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
 
                 // Confirm Pickup Button
-                Button(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(50.dp),
-                    onClick = { /* Handle Pickup Confirmation */
-                        navController.navigate(Routes.DeliveryScreen.name)
-                    },
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.primary,
-                        contentColor = MaterialTheme.colorScheme.onPrimary
-                    ),
-                    shape = RoundedCornerShape(8.dp)
-                ) {
-                    Text(text = "Confirm Pickup", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                if (statusColor != Color.Green && statusColor != Color.Red) {
+                    Button(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(50.dp),
+                        onClick = { /* Handle Pickup Confirmation */
+                            navController.navigate(Routes.DeliveryScreen.name)
+                        },
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = MaterialTheme.colorScheme.primary,
+                            contentColor = MaterialTheme.colorScheme.onPrimary
+                        ),
+                        shape = RoundedCornerShape(8.dp)
+                    ) {
+                        Text(
+                            text = "Confirm Pickup",
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
                 }
             }
         }
