@@ -13,39 +13,25 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color.Companion.White
 import com.example.userapp.composables.AppMainSearchTextField
 import com.example.userapp.features.homeScreen.components.FoodTypesHomeScreenCircleGrid
 import com.example.userapp.features.homeScreen.components.MultipleHomeScreenRestroCards
 import com.example.userapp.features.homeScreen.components.ScrollableCards
 import com.example.userapp.features.homeScreen.components.TopAppBarComposable
-import androidx.compose.ui.graphics.Color as ComposeColor
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen() {
-
-    Scaffold(
-        modifier = Modifier.fillMaxSize(),
-        topBar = {
-            TopAppBar(
-                modifier = Modifier.statusBarsPadding(),
-                title = { Text("Home") },
-                actions = {
-                    TopAppBarComposable()
-                }
-            )
-        },
-        bottomBar = {
-            // Add your BottomNavigationBar here
-        }
-    ) { paddingValues ->
+    Scaffold { paddingValues ->
         Column(
             modifier = Modifier
                 .verticalScroll(state = rememberScrollState())
                 .fillMaxSize()
-                .background(ComposeColor.White)
+                .background(White)
                 .padding(paddingValues)
         ) {
+            TopAppBarComposable()
             AppMainSearchTextField()
             ScrollableCards()
             FoodTypesHomeScreenCircleGrid("What’s mom cooking for you today?")
@@ -53,3 +39,4 @@ fun HomeScreen() {
         }
     }
 }
+

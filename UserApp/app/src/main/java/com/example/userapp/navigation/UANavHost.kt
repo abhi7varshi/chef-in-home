@@ -5,8 +5,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.toRoute
+import com.example.userapp.composables.LandingScreen
 import com.example.userapp.features.auth.ui.LoginScreen
 import com.example.userapp.features.auth.ui.OTPVerifyScreen
+import com.example.userapp.features.homeScreen.HomeScreen
 
 @Composable
 fun UANavHost(
@@ -21,6 +23,10 @@ fun UANavHost(
             val args = it.toRoute<OTPVerifyRoute>()
 
             OTPVerifyScreen(navController = navController, number = args.phoneNumber)
+        }
+
+        composable<HomeRoute> {
+            LandingScreen()
         }
     }
 }

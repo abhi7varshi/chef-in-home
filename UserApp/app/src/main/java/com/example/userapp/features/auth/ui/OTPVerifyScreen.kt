@@ -35,15 +35,17 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.userapp.composables.OtpInput
 import com.example.userapp.composables.UAButton
+import com.example.userapp.navigation.HomeRoute
 import com.example.userapp.ui.theme.UserAppTheme
 
 @Composable
 fun OTPVerifyScreen(
     number: String,
-    navController: NavController = rememberNavController()
+    navController: NavHostController = rememberNavController()
 ) {
     var otp by remember { mutableStateOf("") }
 
@@ -58,10 +60,14 @@ fun OTPVerifyScreen(
         TopAppBar(
             title = {},
             navigationIcon = {
-                Icon(
-                    imageVector = Icons.Default.ArrowBack,
-                    contentDescription = null
-                )
+                IconButton(onClick = {
+                    navController.popBackStack()
+                }) {
+                    Icon(
+                        imageVector = Icons.Default.ArrowBack,
+                        contentDescription = null
+                    )
+                }
             }
         )
     }) { innerPadding ->
@@ -86,7 +92,9 @@ fun OTPVerifyScreen(
             }
             UAButton(
                 text = "Verify",
-                onClick = {},
+                onClick = {
+                    navController.navigate(route = HomeRoute)
+                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 12.dp)

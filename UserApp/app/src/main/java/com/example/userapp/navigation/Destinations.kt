@@ -1,5 +1,13 @@
 package com.example.userapp.navigation
 
+import android.graphics.drawable.Icon
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.ui.graphics.vector.ImageVector
+import com.example.userapp.PaymentScreenRoute
 import com.example.userapp.R
 import kotlinx.serialization.Serializable
 
@@ -7,8 +15,7 @@ import kotlinx.serialization.Serializable
 data class TopLevelRoute<T : Any>(
     val route: T,
     val title: String,
-    val iconRes: Int,
-    val selectedIconRes: Int
+    val icon: ImageVector
 )
 
 //tabs
@@ -16,26 +23,22 @@ val TOP_LEVEL_ROUTES = listOf(
     TopLevelRoute(
         route = HomeRoute,
         title = "Home",
-        iconRes = R.drawable.home_icon,
-        selectedIconRes = R.drawable.home_selected_icon
+        icon = Icons.Default.Home
     ),
     TopLevelRoute(
         route = ReorderRoute,
         title = "Reorder",
-        iconRes = R.drawable.reorder_icon,
-        selectedIconRes = R.drawable.reorder_selected_icon
+        icon = Icons.Default.Refresh
     ),
     TopLevelRoute(
         route = SupportRoute,
         title = "Support",
-        iconRes = R.drawable.support_icon,
-        selectedIconRes = R.drawable.support_selected_icon
+        icon = Icons.Default.Email
     ),
     TopLevelRoute(
         route = AccountRoute,
         title = "Account",
-        iconRes = R.drawable.account_icon,
-        selectedIconRes = R.drawable.reorder_selected_icon
+        icon = Icons.Default.Person
     ),
 )
 
@@ -44,6 +47,9 @@ val TOP_LEVEL_ROUTES = listOf(
 //screens
 @Serializable
 data object HomeRoute
+
+@Serializable
+data object KitchenRoute
 
 @Serializable
 data object ReorderRoute
