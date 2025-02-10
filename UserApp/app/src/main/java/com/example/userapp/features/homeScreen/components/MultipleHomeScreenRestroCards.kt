@@ -9,10 +9,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.userapp.R
+import com.example.userapp.navigation.RestaurantRoute
 
 @Composable
-fun MultipleHomeScreenRestroCards(noOfRestaurantsAround: Int) {
+fun MultipleHomeScreenRestroCards(
+    noOfRestaurantsAround: Int,
+    navController: NavHostController = rememberNavController()
+) {
     Column {
         Text(
 //            text = "$noOfRestaurantsAround restaurants around you",
@@ -38,6 +44,9 @@ fun MultipleHomeScreenRestroCards(noOfRestaurantsAround: Int) {
             isClosesSoon = true,
             isRecycleFriendly = true,
 //            navigator = navigator
+            onClick = {
+                navController.navigate(route = RestaurantRoute)
+            }
         )
         RestaurantImageNameCardBig(
             image = R.drawable.food,

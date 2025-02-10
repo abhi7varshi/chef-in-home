@@ -1,14 +1,11 @@
 package com.example.userapp.navigation
 
-import android.graphics.drawable.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.example.userapp.PaymentScreenRoute
-import com.example.userapp.R
 import kotlinx.serialization.Serializable
 
 //tab type
@@ -49,7 +46,10 @@ val TOP_LEVEL_ROUTES = listOf(
 data object HomeRoute
 
 @Serializable
-data object KitchenRoute
+data object RestaurantRoute
+
+@Serializable
+data object PaymentRoute
 
 @Serializable
 data object ReorderRoute

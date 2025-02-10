@@ -17,9 +17,9 @@ import androidx.compose.ui.unit.sp
 import com.example.userapp.ui.theme.zGreenColor
 
 @Composable
-fun PaymentButton() {
+fun PaymentButton(onClick: () -> Unit = {}) {
     Button(
-        onClick = { /* Handle button click */ },
+        onClick = onClick,
         modifier = Modifier
             .fillMaxWidth()
             .height(height = 80.dp)

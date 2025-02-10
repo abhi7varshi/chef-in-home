@@ -57,8 +57,10 @@ fun RestaurantImageNameCardBig(
     isClosesSoon: Boolean = false,
     isRecycleFriendly: Boolean = false,
 //    navigator: DestinationsNavigator
+    onClick: () -> Unit = {},
 ) {
     Card(
+        onClick = onClick,
         shape = RoundedCornerShape(12.dp),
         modifier = Modifier
             .width(LocalConfiguration.current.screenWidthDp.dp)
