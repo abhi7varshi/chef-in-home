@@ -49,17 +49,17 @@ fun SettingsContent(
     authViewModel: AuthViewModel
 ) {
     val authState = authViewModel.authState.observeAsState().value
-    LaunchedEffect(authState) {
-        when (authState) {
-            is AuthState.Unauthenticated -> {
-                navController.navigate(LoginRoute)
-            }
-
-            else -> {
-                Log.d("SettingsContent", "Unknown auth state: $authState")
-            }
-        }
-    }
+//    LaunchedEffect(authState) {
+//        when (authState) {
+//            is AuthState.Unauthenticated -> {
+//                navController.navigate(LoginRoute)
+//            }
+//
+//            else -> {
+//                Log.d("SettingsContent", "Unknown auth state: $authState")
+//            }
+//        }
+//    }
 
     Column(
         modifier = Modifier.fillMaxSize(),

@@ -58,11 +58,17 @@ fun HomeContent(
                 2 -> PickupList(orders.filter { it.status == OrderStatus.PICKED_UP })
             }
         } else {
-            Image(
-                painter = painterResource(id = R.drawable.offline),
-                contentDescription = "Offline"
-            )
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.offline),
+                    contentDescription = "Offline"
+                )
+            }
         }
+
     }
 }
 
