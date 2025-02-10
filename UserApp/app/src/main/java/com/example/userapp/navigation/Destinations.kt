@@ -74,4 +74,5 @@ data object LocationRoute
 @Serializable
 data object AddressRoute
 
-
+@Serializable
+data object AccountScreenRoute
