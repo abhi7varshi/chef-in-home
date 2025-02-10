@@ -170,7 +170,7 @@ fun SettingsContent(
                 },
                 dismissButton = {
                     Button(
-                        onClick = { showDialog.value = false } 
+                        onClick = { showDialog.value = false }
                     ) {
                         Text("Cancel")
                     }
@@ -258,7 +258,16 @@ fun SettingsContent(
         // Sign Out Button
         Button(
             colors = ButtonDefaults.buttonColors(containerColor = PrimaryColor),
-            onClick = { /* Handle sign out action */ },
+            onClick = {
+                when (authState) {
+                    is AuthState.Unauthenticated -> {
+                        navController.navigate(LoginRoute)
+                    }
+                    else -> {
+                        Log.d("SettingsContent", "Unknown auth state: $authState")
+                    }
+                }
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp)
