@@ -95,7 +95,7 @@ fun LoginScreen(
             val number = remember { mutableStateOf("") }
 
             Image(
-                painter = painterResource(id = R.drawable.header_img),
+                painter = painterResource(id = R.drawable.chef_app_logo),
                 contentDescription = "",
                 contentScale = ContentScale.Crop,
                 modifier = Modifier

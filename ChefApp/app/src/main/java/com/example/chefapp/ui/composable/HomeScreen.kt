@@ -33,6 +33,7 @@ import com.example.chefapp.R
 import com.example.chefapp.SettingsRepository
 import com.example.chefapp.SettingsViewModel
 import com.example.chefapp.data.dummyOrders
+import com.example.chefapp.ui.theme.PrimaryColor
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -53,7 +54,7 @@ fun HomeScreen(
         topBar = {
             TopAppBar(
                 colors = topAppBarColors(
-                    containerColor = Color(0xFF256FEF),
+                    containerColor = PrimaryColor,
                 ),
                 title = {
                     Text(
