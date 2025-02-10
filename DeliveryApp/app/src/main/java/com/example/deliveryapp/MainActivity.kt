@@ -33,12 +33,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.deliveryapp.common_reusable_ui.BottomNavigationBar
 import com.example.deliveryapp.dashBoard.AccountScreen
-import com.example.deliveryapp.dashBoard.Orders.MapScreen
 import com.example.deliveryapp.dashBoard.Orders.OrderScreen
 import com.example.deliveryapp.navigation.NavLibrary
-import com.example.deliveryapp.registration.PersonalInfo
 import com.example.deliveryapp.ui.theme.DeliveryAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -54,7 +53,7 @@ class MainActivity : ComponentActivity() {
 //                Welcome()
 
 //                MapScreen()
-//                NavLibrary()
+                NavLibrary()
 //                DeliveryScreen(modifier = Modifier)
 //                UploadDocument(text = "Driving License")
 //                RegistrationDone()
@@ -69,7 +68,9 @@ class MainActivity : ComponentActivity() {
 
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    navController: NavController
+) {
     val repo = SettingsRepository(context = LocalContext.current)
     val viewModel = SettingsViewModel(repository = repo)
     var selectedTab = remember { mutableStateOf("Orders") }
@@ -120,31 +121,7 @@ fun HomeScreen() {
             AccountScreen(modifier = Modifier.padding(innerPadding))
         } else {
 //            DeliveryScreen(modifier = Modifier.padding(innerPadding))
-            OrderScreen(modifier = Modifier.padding(innerPadding))
-//            Box(
-//                modifier = Modifier
-//                    .padding(innerPadding)
-//                    .fillMaxSize()
-//                    .background(color = MaterialTheme.colorScheme.background),
-//                contentAlignment = Alignment.Center
-//            ) {
-//                Column {
-//
-//                    Text("Dark mode: ${isDarkModeEnabled.value}")
-//                    Switch(checked = isDarkModeEnabled.value, onCheckedChange = {
-//                        viewModel.setDarkMode(it)
-//                    })
-//                }
-//            }
+            OrderScreen(navController = navController)
         }
-    }
-}
-
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    DeliveryAppTheme {
-        HomeScreen()
     }
 }

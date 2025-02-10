@@ -10,15 +10,19 @@ import com.example.delivery_app.auth.SignUP
 import com.example.deliveryapp.HomeScreen
 import com.example.deliveryapp.auth.ui.Welcome
 import com.example.deliveryapp.dashBoard.AccountScreen
+import com.example.deliveryapp.dashBoard.Orders.DeliveryScreen
 import com.example.deliveryapp.dashBoard.Orders.OrderScreen
+import com.example.userapp.features.auth.OTPVerification
 
 enum class Routes {
     Order,
     Account,
     Welcome,
     SignIn,
+    OtpVerification,
     SignUp,
     HomeScreen,
+    DeliveryScreen
 }
 
 @Composable
@@ -29,23 +33,23 @@ fun NavLibrary() {
         navController = navController,
         startDestination = Routes.SignIn.name,
     ) {
-        composable (Routes.Welcome.name) {
-            Welcome(navController = navController)
-        }
         composable(Routes.SignIn.name){
             SignIn(modifier = Modifier, navController = navController)
         }
-        composable(Routes.SignUp.name){
-            SignUP(modifier = Modifier, navController = navController)
+        composable(Routes.OtpVerification.name){
+            OTPVerification(navController = navController)
         }
         composable(Routes.Order.name) {
-            OrderScreen(modifier = Modifier)
+            OrderScreen(navController = navController)
+        }
+        composable(Routes.DeliveryScreen.name) {
+            DeliveryScreen(navController = navController)
         }
         composable(Routes.Account.name) {
             AccountScreen(modifier = Modifier)
         }
         composable(Routes.HomeScreen.name){
-            HomeScreen()
+            HomeScreen(navController = navController)
         }
     }
 }

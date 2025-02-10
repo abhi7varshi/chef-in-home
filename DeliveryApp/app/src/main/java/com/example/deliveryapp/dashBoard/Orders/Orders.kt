@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.deliveryapp.common_reusable_ui.CommonOrderBox
 
 
@@ -32,14 +33,14 @@ enum class DeliveryStatus {
 
 @Composable
 fun OrderScreen(
-    modifier: Modifier
+    navController: NavController
 ) {
     val expandedOrderId = remember { mutableStateOf<String?>(null) }
     Box(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize()
             .background(color = MaterialTheme.colorScheme.background)
-            .padding(top = 12.dp),
+            .padding(top = 120.dp),
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Row(horizontalArrangement = Arrangement.Center) {
@@ -70,6 +71,7 @@ fun OrderScreen(
                 orders.forEach{ (orderId, status)->
                     item {
                         CommonOrderBox(
+                            navController = navController,
                             orderId = orderId,
                             status = status,
                             statusColor = when(status){
@@ -92,109 +94,8 @@ fun OrderScreen(
                     }
                 }
 
-//
-//                item {
-//                    CommonOrderBox(
-//                        orderId = "0115",
-//                        status = "Pickup Pending",
-//                        statusColor = Color.Blue
-//                    )
-//                }
-//                item { Spacer(modifier = Modifier.height(12.dp)) }
-//                item {
-//                    CommonOrderBox(
-//                        orderId = "0114",
-//                        status = "Delivered",
-//                        statusColor = Color.Green
-//                    )
-//                }
-//                item { Spacer(modifier = Modifier.height(12.dp)) }
-//                item {
-//                    CommonOrderBox(
-//                        orderId = "0113",
-//                        status = "Delivered",
-//                        statusColor = Color.Green
-//                    )
-//                }
-//                item { Spacer(modifier = Modifier.height(12.dp)) }
-//                item {
-//                    CommonOrderBox(
-//                        orderId = "0112",
-//                        status = "pickup Failed",
-//                        statusColor = Color.Red
-//                    )
-//                }
-//                item { Spacer(modifier = Modifier.height(12.dp)) }
-//                item {
-//                    CommonOrderBox(
-//                        orderId = "0111",
-//                        status = "Delivered",
-//                        statusColor = Color.Green
-//                    )
-//                }
-//                item { Spacer(modifier = Modifier.height(12.dp)) }
-//                item {
-//                    CommonOrderBox(
-//                        orderId = "0110",
-//                        status = "Delivered",
-//                        statusColor = Color.Green
-//                    )
-//                }
-//                item { Spacer(modifier = Modifier.height(12.dp)) }
-//                item {
-//                    CommonOrderBox(
-//                        orderId = "0109",
-//                        status = "Delivered",
-//                        statusColor = Color.Green
-//                    )
-//                }
-//                item { Spacer(modifier = Modifier.height(12.dp)) }
-//                item {
-//                    CommonOrderBox(
-//                        orderId = "0108",
-//                        status = "Delivered",
-//                        statusColor = Color.Green
-//                    )
-//                }
-//                item { Spacer(modifier = Modifier.height(12.dp)) }
-//                item {
-//                    CommonOrderBox(
-//                        orderId = "0107",
-//                        status = "pickup Failed",
-//                        statusColor = Color.Red
-//                    )
-//                }
-//                item { Spacer(modifier = Modifier.height(12.dp)) }
-//                item {
-//                    CommonOrderBox(
-//                        orderId = "0106",
-//                        status = "Delivered",
-//                        statusColor = Color.Green
-//                    )
-//                }
-//                item { Spacer(modifier = Modifier.height(12.dp)) }
-//                item {
-//                    CommonOrderBox(
-//                        orderId = "0105",
-//                        status = "Delivered",
-//                        statusColor = Color.Green
-//                    )
-//                }
-//                item { Spacer(modifier = Modifier.height(12.dp)) }
-//                item {
-//                    CommonOrderBox(
-//                        orderId = "0104",
-//                        status = "Delivered",
-//                        statusColor = Color.Green
-//                    )
-//                }
             }
         }
     }
 }
 
-@Composable
-@Preview(showBackground = true)
-fun OrderScreenPreview() {
-    OrderScreen(modifier = Modifier.padding(8.dp))
-}

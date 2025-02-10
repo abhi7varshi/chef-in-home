@@ -80,7 +80,7 @@ fun AccountScreen(
                                     imageVector = Icons.Outlined.Person,
                                     contentDescription = null,
                                     modifier = Modifier.size(18.dp),
-                                    tint = Color(0xFF0990ff)
+                                    tint = MaterialTheme.colorScheme.primary
                                 )
                             },
                         )
@@ -92,7 +92,7 @@ fun AccountScreen(
                                     imageVector = Icons.Outlined.Call,
                                     contentDescription = null,
                                     modifier = Modifier.size(18.dp),
-                                    tint = Color(0xFF0990ff)
+                                    tint = MaterialTheme.colorScheme.primary
                                 )
                             },
                         )
@@ -104,7 +104,7 @@ fun AccountScreen(
                                     imageVector = Icons.Outlined.MailOutline,
                                     contentDescription = null,
                                     modifier = Modifier.size(18.dp),
-                                    tint = Color(0xFF0990ff)
+                                    tint = MaterialTheme.colorScheme.primary
                                 )
                             },
                         )
@@ -133,14 +133,14 @@ fun AccountScreen(
                     Icon(
                         imageVector = Icons.Outlined.Person,
                         contentDescription = null,
-                        tint = Color(0xFF0990ff)
+                        tint = MaterialTheme.colorScheme.primary
                     )
                 },
                 trailingIcon = {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
                         contentDescription = null,
-                        tint = Color(0xFF0990ff)
+                        tint = MaterialTheme.colorScheme.primary
                     )
                 }
             )
@@ -152,14 +152,14 @@ fun AccountScreen(
                     Icon(
                         imageVector = Icons.Outlined.Call,
                         contentDescription = null,
-                        tint = Color(0xFF0990ff)
+                        tint = MaterialTheme.colorScheme.primary
                     )
                 },
                 trailingIcon = {
                     Icon(
                         imageVector = Icons.Default.KeyboardArrowRight,
                         contentDescription = null,
-                        tint = Color(0xFF0990ff)
+                        tint = MaterialTheme.colorScheme.primary
                     )
                 }
             )
@@ -171,14 +171,14 @@ fun AccountScreen(
                     Icon(
                         imageVector = Icons.Outlined.Call,
                         contentDescription = null,
-                        tint = Color(0xFF0990ff)
+                        tint = MaterialTheme.colorScheme.primary
                     )
                 },
                 trailingIcon = {
                     Icon(
                         imageVector = Icons.Default.KeyboardArrowRight,
                         contentDescription = null,
-                        tint = Color(0xFF0990ff)
+                        tint = MaterialTheme.colorScheme.primary
                     )
                 }
             )
@@ -190,14 +190,14 @@ fun AccountScreen(
                     Icon(
                         imageVector = Icons.Outlined.Info,
                         contentDescription = null,
-                        tint =Color(0xFF0990ff)
+                        tint =MaterialTheme.colorScheme.primary
                     )
                 },
                 trailingIcon = {
                     Icon(
                         imageVector = Icons.Default.KeyboardArrowRight,
                         contentDescription = null,
-                        tint = Color(0xFF0990ff)
+                        tint = MaterialTheme.colorScheme.primary
                     )
                 }
             )
@@ -209,14 +209,14 @@ fun AccountScreen(
                     Icon(
                         imageVector = Icons.Outlined.DateRange,
                         contentDescription = null,
-                        tint = Color(0xFF0990ff)
+                        tint = MaterialTheme.colorScheme.primary
                     )
                 },
                 trailingIcon = {
                     Icon(
                         imageVector = Icons.Default.KeyboardArrowRight,
                         contentDescription = null,
-                        tint = Color(0xFF0990ff)
+                        tint = MaterialTheme.colorScheme.primary
                     )
                 }
             )
@@ -228,14 +228,14 @@ fun AccountScreen(
                     Icon(
                         imageVector = Icons.Outlined.Done,
                         contentDescription = null,
-                        tint = Color(0xFF0990ff)
+                        tint = MaterialTheme.colorScheme.primary
                     )
                 },
                 trailingIcon = {
                     Icon(
                         imageVector = Icons.Default.KeyboardArrowRight,
                         contentDescription = null,
-                        tint = Color(0xFF0990ff)
+                        tint = MaterialTheme.colorScheme.primary
                     )
                 }
             )
@@ -247,7 +247,7 @@ fun AccountScreen(
                     Icon(
                         imageVector = Icons.Outlined.ExitToApp,
                         contentDescription = null,
-                        tint = Color(0xFF0990ff)
+                        tint = MaterialTheme.colorScheme.primary
                     )
                 },
 

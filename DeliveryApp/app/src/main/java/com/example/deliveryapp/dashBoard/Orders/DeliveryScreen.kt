@@ -22,11 +22,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.example.deliveryapp.R
 
 @Composable
-fun DeliveryScreen(modifier: Modifier) {
-    Box(modifier = modifier.fillMaxSize().padding(8.dp)) {
+fun DeliveryScreen(navController: NavController) {
+    Box(modifier = Modifier.fillMaxSize().padding(8.dp)) {
         // Map View (Full-Screen Image)
         Image(
             painter = painterResource(R.drawable.map),
@@ -97,7 +99,7 @@ fun DeliveryScreen(modifier: Modifier) {
                         .fillMaxWidth()
                         .height(48.dp),
                     shape = RoundedCornerShape(24.dp),
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF0990ff))
+                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
                 ) {
                     Text(
                         text = "Start",
@@ -112,8 +114,3 @@ fun DeliveryScreen(modifier: Modifier) {
 
 
 
-@Composable
-@Preview(showBackground = true)
-fun DeliveryScreenPreview() {
-    DeliveryScreen(modifier = Modifier)
-}

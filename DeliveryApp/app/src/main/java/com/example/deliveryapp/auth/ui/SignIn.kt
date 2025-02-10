@@ -26,12 +26,15 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.ShapeDefaults
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -49,15 +52,17 @@ import com.example.deliveryapp.common_reusable_ui.CommonCenterAlignedAppBar
 import com.example.deliveryapp.common_reusable_ui.CustomTextFieldWithIcon
 import com.example.deliveryapp.navigation.Routes
 import com.example.deliveryapp.ui.theme.DeliveryAppTheme
+import kotlinx.coroutines.launch
 
 
 @Composable
 fun SignIn(modifier: Modifier, navController: NavController) {
-    Scaffold(
-//        topBar = {
-//            CommonCenterAlignedAppBar("Sign In",navController)
-//        }
-    ) { innerPadding ->
+    val snackbarHostState = remember {SnackbarHostState()}
+    Scaffold( snackbarHost = { SnackbarHost(snackbarHostState) }
+    ) {
+
+        innerPadding ->
+        val coroutine = rememberCoroutineScope()
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -100,7 +105,11 @@ fun SignIn(modifier: Modifier, navController: NavController) {
                 )
                 CustomTextFieldWithIcon(
                     modifier = Modifier,
-                    onValueChange = { phone = it },
+                    onValueChange = {
+                        if (it.length <= 10) {
+                            phone = it
+                        }
+                    },
                     leadingIcon = {
                        Row(verticalAlignment = Alignment.CenterVertically) {
                            Spacer(modifier = Modifier.width(16.dp))
@@ -130,7 +139,16 @@ fun SignIn(modifier: Modifier, navController: NavController) {
                 Spacer(modifier = Modifier.padding(8.dp))
                 Button(
                     onClick = {
-                        navController.navigate(Routes.HomeScreen.name)
+                        if (phone.length==10){
+                            navController.navigate(Routes.OtpVerification.name)
+                        }
+                        else
+                        {
+                            coroutine.launch {
+                                snackbarHostState.showSnackbar("Enter a valid 10 digit number."      )
+                            }
+                        }
+
                     },
                     colors = ButtonColors(
                         containerColor = MaterialTheme.colorScheme.primary,
@@ -188,7 +206,9 @@ fun SignIn(modifier: Modifier, navController: NavController) {
                 Spacer(modifier = Modifier.height(16.dp))
 
                 OutlinedButton(
-                    onClick = {},
+                    onClick = {
+
+                    },
                     shape = ShapeDefaults.Medium,
                     border = BorderStroke(width = 1.dp, color = Color.Black.copy(alpha = 0.16f)),
                     modifier = Modifier
